@@ -1,1 +1,10 @@
+# Gradle files
 /build
+
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Log Files
+*.log
