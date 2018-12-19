@@ -1,0 +1,32 @@
+[
+  {
+    "recipeId": "1",
+    "name": "Madeleines",
+    "ingredients": [
+      {
+        "name": "beurre",
+        "quantity": "200g"
+      },
+      {
+        "name": "sucre",
+        "quantity": "200g"
+      },
+      {
+        "name": "farine",
+        "quantity": "200g"
+      },
+      {
+        "name": "oeufs",
+        "quantity": "4"
+      },
+      {
+        "name": "sel",
+        "quantity": "1 pincée"
+      },
+      {
+        "name": "sucre vanillé",
+        "quantity": "1 paquet"
+      }
+    ]
+  }
+]
