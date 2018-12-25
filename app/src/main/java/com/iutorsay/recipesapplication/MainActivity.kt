@@ -1,12 +1,17 @@
 package com.iutorsay.recipesapplication
 
 import android.arch.lifecycle.Observer
+import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
 import kotlinx.android.synthetic.main.activity_main.*
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,5 +40,9 @@ class MainActivity : AppCompatActivity() {
 
         recyclelistRecipeHomePage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclelistRecipeHomePage.adapter = AdapterListHomePage(recipes, this);
+    }
+
+    fun openRecipeCreationActivity(v: View) {
+        startActivity(Intent(this, RecipeCreationActivity::class.java))
     }
 }

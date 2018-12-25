@@ -11,6 +11,6 @@ import android.support.annotation.NonNull
 data class Ingredient(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val ingredientId: Int,
     @ColumnInfo(name = "recipe_id") var recipeId: Int,
-    val name: String,
-    val quantity: String
+    var name: String,
+    var quantity: String
 )

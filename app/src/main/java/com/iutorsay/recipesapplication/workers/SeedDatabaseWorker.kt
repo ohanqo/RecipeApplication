@@ -26,10 +26,10 @@ class SeedDatabaseWorker(context: Context, workerParams: WorkerParameters) : Wor
                 recipe.ingredients.forEach { it.recipeId = recipe.recipeId }
                 database.ingredientDao().insertAll(recipe.ingredients)
             }
-            Result.SUCCESS
+            Result.success()
         } catch (ex: Exception) {
             Log.e("—SEEDING", "Error seeding database", ex)
-            Result.FAILURE
+            Result.failure()
         } finally {
             jsonReader?.close()
         }
