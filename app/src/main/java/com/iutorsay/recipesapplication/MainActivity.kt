@@ -21,11 +21,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val recyclerView = findViewById(R.id.recyclelistRecipeHomePage) as RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
-
         val recipes = ArrayList<Recipe>();
-
         recipes.add(Recipe("1"));
         recipes.add(Recipe("2"));
         recipes.add(Recipe("3"));
@@ -38,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         recipes.add(Recipe("10"));
         recipes.add(Recipe("11"));
 
-        val adapterListRecipe = AdapterListHomePage(recipes);
-
-        recyclerView.adapter = adapterListRecipe;
+        //val recyclerView = findViewById(R.id.recyclelistRecipeHomePage) as RecyclerView
+        recyclelistRecipeHomePage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        recyclelistRecipeHomePage.adapter = AdapterListHomePage(recipes, this);
     }
 }
