@@ -32,16 +32,17 @@ class AdapterListHomePage(private val userRecipeList: ArrayList<Recipe>, val con
         val txtNameItem = holder?.itemView.findViewById(R.id.itemListHomeName) as TextView;
 
         txtNameItem.text = itemRecipe.name;
+        //Pour passer l'information a l'intent dans le ViewHolder
+        holder?.recipe = itemRecipe
     }
 }
 
-class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-    //val txtNameItem = itemView.findViewById(R.id.itemListHomeName) as TextView;
+class ViewHolder(itemView: View, var recipe : Recipe? = null) : RecyclerView.ViewHolder(itemView){
 
     init {
         itemView.setOnClickListener {
-            println("Test");
-            val intent = Intent(itemView.context, MainActivity::class.java);
+            val intent = Intent(itemView.context, RecipeDetailActivity::class.java);
+            intent.putExtra("description", recipe?.name)
             itemView.context.startActivity(intent);
         }
     }

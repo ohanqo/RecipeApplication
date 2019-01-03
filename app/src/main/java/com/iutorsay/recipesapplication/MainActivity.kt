@@ -1,13 +1,12 @@
 package com.iutorsay.recipesapplication
 
 import android.arch.lifecycle.Observer
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
 import kotlinx.android.synthetic.main.activity_main.*
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         recipes.add(Recipe("10"));
         recipes.add(Recipe("11"));
 
-        //val recyclerView = findViewById(R.id.recyclelistRecipeHomePage) as RecyclerView
         recyclelistRecipeHomePage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclelistRecipeHomePage.adapter = AdapterListHomePage(recipes, this);
     }
