@@ -1,5 +1,7 @@
 package com.iutorsay.recipesapplication
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,15 +12,12 @@ import android.widget.TextView
  * Created by Stephane on 16/12/2018
  */
 
-class AdapterListHomePage(private val userRecipeList: ArrayList<Recipe>) : RecyclerView.Adapter<AdapterListHomePage.ViewHolder>() {
+class AdapterListHomePage(private val userRecipeList: ArrayList<Recipe>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val txtNameItem = itemView.findViewById(R.id.itemListHomeName) as TextView;
-    }
-
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
         //? pour gerer le null
-        val view = LayoutInflater.from(p0?.context).inflate(R.layout.list_item_home, p0,false);
+        val view = LayoutInflater.from(context)
+                    .inflate(R.layout.list_item_home, parent,false);
         return ViewHolder(view);
     }
 
@@ -27,11 +26,24 @@ class AdapterListHomePage(private val userRecipeList: ArrayList<Recipe>) : Recyc
         return userRecipeList.size;
     }
 
-    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        val itemRecipe: Recipe = userRecipeList[p1]
+    //associer chaque elements a une vue
+    override fun onBindViewHolder(holder: ViewHolder, positionItem: Int) {
+        val itemRecipe: Recipe = userRecipeList[positionItem] //element de la list
+        val txtNameItem = holder?.itemView.findViewById(R.id.itemListHomeName) as TextView;
 
-        p0?.txtNameItem?.text = itemRecipe.name;
+        txtNameItem.text = itemRecipe.name;
+        //Pour passer l'information a l'intent dans le ViewHolder
+        holder?.recipe = itemRecipe
     }
+}
 
+class ViewHolder(itemView: View, var recipe : Recipe? = null) : RecyclerView.ViewHolder(itemView){
 
+    init {
+        itemView.setOnClickListener {
+            val intent = Intent(itemView.context, RecipeDetailActivity::class.java);
+            intent.putExtra("description", recipe?.name)
+            itemView.context.startActivity(intent);
+        }
+    }
 }

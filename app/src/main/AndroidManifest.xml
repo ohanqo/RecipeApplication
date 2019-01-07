@@ -10,13 +10,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity   android:name=".MainActivity"
+                    android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".RecipeDetailActivity"
+                  android:launchMode="singleTop">
+            <!-- permet la fleche retour de l'action bar une fois dans recipe detail -->
+            <meta-data  android:name="android.support.PARENT_ACTIVITY"
+                        android:value=".MainActivity"/>
+        </activity>
+
     </application>
 
 </manifest>
