@@ -27,6 +27,7 @@ class RecipeCreationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recipe_creation)
         setSupportActionBar(toolbar as Toolbar)
         toolbar.toolbar_title.text = resources.getString(R.string.recipe_creation)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val recipeEditInstructionsAdapter = EditInstructionsAdapter()
         val recipeEditIngredientsAdapter = EditIngredientsAdapter()

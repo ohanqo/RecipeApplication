@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar as Toolbar)
         toolbar.toolbar_title.text = resources.getString(R.string.app_name)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         RecipeRepository.getInstance().getAllWithIngredients().observe(this, Observer { recipesWithIngredients ->
             recipesWithIngredients?.forEach {
