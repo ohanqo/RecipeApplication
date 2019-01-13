@@ -6,17 +6,22 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.design.widget.AppBarLayout
 import android.util.Log
 import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.view.View
+import kotlinx.android.synthetic.main.toolbar.view.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar as Toolbar)
+        toolbar.toolbar_title.text = resources.getString(R.string.app_name)
 
         RecipeRepository.getInstance().getAllWithIngredients().observe(this, Observer { recipesWithIngredients ->
             recipesWithIngredients?.forEach {

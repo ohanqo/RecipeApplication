@@ -11,8 +11,10 @@ import pl.aprilapps.easyphotopicker.EasyImage
 import pl.aprilapps.easyphotopicker.DefaultCallback
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.support.v7.widget.Toolbar
 import android.view.View
 import kotlinx.android.synthetic.main.recipe_image.view.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import java.io.File
 
 
@@ -23,6 +25,8 @@ class RecipeCreationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_creation)
+        setSupportActionBar(toolbar as Toolbar)
+        toolbar.toolbar_title.text = resources.getString(R.string.recipe_creation)
 
         val recipeEditInstructionsAdapter = EditInstructionsAdapter()
         val recipeEditIngredientsAdapter = EditIngredientsAdapter()

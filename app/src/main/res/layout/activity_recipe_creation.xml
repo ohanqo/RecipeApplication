@@ -11,6 +11,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+        <include android:id="@+id/toolbar" layout="@layout/toolbar"/>
+
         <EditText
                 android:hint="@string/recipe_name"
                 android:inputType="textMultiLine"
@@ -23,7 +25,7 @@
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:textSize="@dimen/font_larger"
-                android:fontFamily="@font/manrope_bold"
+                android:fontFamily="@font/circular_std_bold"
                 android:id="@+id/recipeEditTextName" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipePictureHolder"
@@ -32,7 +34,7 @@
         <TextView
                 android:text="@string/recipe_instructions"
                 android:textSize="@dimen/font_large"
-                android:fontFamily="@font/manrope_bold"
+                android:fontFamily="@font/circular_std_bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
@@ -41,11 +43,13 @@
         <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="151dp" tools:srcCompat="@tools:sample/backgrounds/scenic"
-                android:id="@+id/recipePictureHolder" app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/recipePictureHolder"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="false" android:cropToPadding="false"
-                android:background="@color/cardview_dark_background"/>
+                android:background="@color/cardview_dark_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -59,7 +63,7 @@
                 android:inputType="textMultiLine"/>
         <TextView
                 android:text="@string/recipe_description"
-                android:fontFamily="@font/manrope_bold"
+                android:fontFamily="@font/circular_std_bold"
                 android:textSize="@dimen/font_large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +73,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/recipeEditTextName"/>
         <TextView
                 android:text="@string/recipe_ingredients"
-                android:fontFamily="@font/manrope_bold"
+                android:fontFamily="@font/circular_std_bold"
                 android:textSize="@dimen/font_large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +92,7 @@
         <Button
                 android:text="@string/add_instruction"
                 android:textAllCaps="false"
-                    style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/addInstructionButton"
                 android:layout_marginTop="8dp"
