@@ -1,5 +1,6 @@
 package com.iutorsay.recipesapplication.data.repositories
 
+import android.os.AsyncTask
 import com.iutorsay.recipesapplication.data.AppDatabase
 import com.iutorsay.recipesapplication.data.entities.Recipe
 
@@ -12,7 +13,7 @@ class RecipeRepository private constructor(private val databaseInstance: AppData
 
     fun getAllWithIngredients() = recipeDao.getAllWithIngredients()
 
-    fun insert(recipe: Recipe) = recipeDao.insert(recipe)
+    fun insert(recipe: Recipe) : Long = InsertAsyncTask().execute(recipe).get()
 
     companion object {
         @Volatile private lateinit var instance: RecipeRepository
@@ -23,5 +24,11 @@ class RecipeRepository private constructor(private val databaseInstance: AppData
         }
 
         fun getInstance() = instance
+    }
+
+    inner class InsertAsyncTask internal constructor() : AsyncTask<Recipe, Void, Long>() {
+        override fun doInBackground(vararg params: Recipe): Long {
+            return recipeDao.insert(params[0])
+        }
     }
 }

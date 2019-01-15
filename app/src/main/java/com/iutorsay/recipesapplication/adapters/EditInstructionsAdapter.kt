@@ -15,7 +15,9 @@ import java.util.ArrayList
 
 
 class EditInstructionsAdapter : RecyclerView.Adapter<EditInstructionsAdapter.InstructionsHolder>() {
-    private var instructions: List<Instruction> = ArrayList()
+    companion object {
+        var instructions: List<Instruction> = ArrayList()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstructionsHolder {
         val itemView = LayoutInflater.from(parent.context)

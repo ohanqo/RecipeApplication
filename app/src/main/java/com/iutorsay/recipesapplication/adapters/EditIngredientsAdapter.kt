@@ -14,7 +14,9 @@ import com.iutorsay.recipesapplication.data.entities.Ingredient
 import kotlinx.android.synthetic.main.recipe_ingredient_edit_card.view.*
 
 class EditIngredientsAdapter : RecyclerView.Adapter<EditIngredientsAdapter.IngredientHolder>() {
-    private var ingredients: List<Ingredient> = ArrayList()
+    companion object {
+        var ingredients: List<Ingredient> = ArrayList()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientHolder {
         val itemView = LayoutInflater.from(parent.context)

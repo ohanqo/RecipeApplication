@@ -1,20 +1,24 @@
 package com.iutorsay.recipesapplication
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
-import com.iutorsay.recipesapplication.adapters.EditInstructionsAdapter
-import kotlinx.android.synthetic.main.activity_recipe_creation.*
-import kotlinx.android.synthetic.main.recipe_image_chooser.*
-import pl.aprilapps.easyphotopicker.EasyImage
-import pl.aprilapps.easyphotopicker.DefaultCallback
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.View
+import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
+import com.iutorsay.recipesapplication.adapters.EditInstructionsAdapter
+import com.iutorsay.recipesapplication.data.entities.Recipe
+import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
+import kotlinx.android.synthetic.main.activity_recipe_creation.*
 import kotlinx.android.synthetic.main.recipe_image.view.*
+import kotlinx.android.synthetic.main.recipe_image_chooser.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import pl.aprilapps.easyphotopicker.DefaultCallback
+import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 
@@ -62,6 +66,42 @@ class RecipeCreationActivity : AppCompatActivity() {
             EasyImage.openCamera(this, 0)
         }
 
+        createRecipeButton.setOnClickListener {
+            createRecipe()
+        }
+    }
+
+    private fun createRecipe() {
+        if (hasNoErrors()) {
+            val index = RecipeRepository.getInstance().insert(Recipe(0, recipeEditTextName.text.toString()))
+            Log.d("__CREATERECIPE", "OK")
+        }
+    }
+
+    private fun hasNoErrors() : Boolean {
+        var hasNoError = true
+
+        if (recipeEditTextName.text.isBlank()) {
+            recipeEditTextName.error = "Le nom ne peut pas être vide"
+            hasNoError = false
+        }
+
+        if (recipeEditTextDescription.text.isBlank()) {
+            recipeEditTextDescription.error =  "La description ne peut pas être vide"
+            hasNoError = false
+        }
+
+        if (EditIngredientsAdapter.ingredients.isEmpty()) {
+            if (hasNoError) Snackbar.make(recipe_creation, R.string.ingredients_list_empty, Snackbar.LENGTH_SHORT).show()
+            hasNoError = false
+        }
+
+        if (EditInstructionsAdapter.instructions.isEmpty()) {
+            if (hasNoError) Snackbar.make(recipe_creation, R.string.instructions_list_empty, Snackbar.LENGTH_SHORT).show()
+            hasNoError = false
+        }
+
+        return hasNoError
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
