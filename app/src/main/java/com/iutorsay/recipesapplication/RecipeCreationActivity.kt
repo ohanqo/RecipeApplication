@@ -1,6 +1,7 @@
 package com.iutorsay.recipesapplication
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -21,11 +22,13 @@ import kotlinx.android.synthetic.main.toolbar.view.*
 import pl.aprilapps.easyphotopicker.DefaultCallback
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
+import java.io.FileOutputStream
 
 
 class RecipeCreationActivity : AppCompatActivity() {
 
     private lateinit var takePhotoView: View
+    private var bitmapPhoto : Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,8 +86,22 @@ class RecipeCreationActivity : AppCompatActivity() {
 
             EditIngredientsAdapter.ingredients = emptyList()
             EditInstructionsAdapter.instructions = emptyList()
-            
+
+            storeRecipeImage(index, recipeEditTextName.text.toString())
+
             finish()
+        }
+    }
+
+    private fun storeRecipeImage(recipeIndex: Int, imageName: String) {
+        bitmapPhoto?.let { photo ->
+            val dir = File(applicationContext.filesDir, "${applicationInfo.name}/recipe/$recipeIndex")
+            if (!dir.exists()) dir.mkdirs()
+            val filePicture = File(dir, imageName)
+            val fos = FileOutputStream(filePicture)
+            photo.compress(Bitmap.CompressFormat.PNG, 90, fos)
+            fos.flush()
+            fos.close()
         }
     }
 
@@ -119,9 +136,8 @@ class RecipeCreationActivity : AppCompatActivity() {
 
         EasyImage.handleActivityResult(requestCode, resultCode, data, this, object : DefaultCallback() {
             override fun onImagePicked(imageFile: File?, source: EasyImage.ImageSource?, type: Int) {
-                //TODO: save image on hd
                 imageFile?.let { photo ->
-                    val bitmapPhoto = BitmapFactory.decodeFile(photo.path)
+                    bitmapPhoto = BitmapFactory.decodeFile(photo.path)
                     val showPhotoView = layoutInflater.inflate(R.layout.recipe_image, null)
                     showPhotoView.photo.setImageBitmap(bitmapPhoto)
                     showPhotoView.removePhotoBtn.setOnClickListener { removePhoto() }
