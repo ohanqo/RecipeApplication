@@ -7,11 +7,12 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.View
 import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
 import com.iutorsay.recipesapplication.adapters.EditInstructionsAdapter
 import com.iutorsay.recipesapplication.data.entities.Recipe
+import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
+import com.iutorsay.recipesapplication.data.repositories.InstructionRepository
 import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
 import kotlinx.android.synthetic.main.activity_recipe_creation.*
 import kotlinx.android.synthetic.main.recipe_image.view.*
@@ -73,8 +74,17 @@ class RecipeCreationActivity : AppCompatActivity() {
 
     private fun createRecipe() {
         if (hasNoErrors()) {
-            val index = RecipeRepository.getInstance().insert(Recipe(0, recipeEditTextName.text.toString()))
-            Log.d("__CREATERECIPE", "OK")
+            val index = RecipeRepository.getInstance().insert(Recipe(0, recipeEditTextName.text.toString())).toInt()
+            EditIngredientsAdapter.ingredients.forEach { ingredient -> ingredient.recipeId = index }
+            EditInstructionsAdapter.instructions.forEach { instruction -> instruction.recipeId = index }
+
+            IngredientRepository.getInstance().insertAll(EditIngredientsAdapter.ingredients)
+            InstructionRepository.getInstance().insertAll(EditInstructionsAdapter.instructions)
+
+            EditIngredientsAdapter.ingredients = emptyList()
+            EditInstructionsAdapter.instructions = emptyList()
+            
+            finish()
         }
     }
 

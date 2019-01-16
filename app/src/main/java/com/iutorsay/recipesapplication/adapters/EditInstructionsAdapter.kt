@@ -35,7 +35,7 @@ class EditInstructionsAdapter : RecyclerView.Adapter<EditInstructionsAdapter.Ins
     }
 
     fun addInstruction() {
-        instructions += Instruction(0, "")
+        instructions += Instruction(0, 0, "")
         notifyDataSetChanged()
     }
 

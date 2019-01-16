@@ -1,10 +1,10 @@
-package com.iutorsay.recipesapplication
+package com.iutorsay.recipesapplication.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import kotlinx.android.synthetic.main.list_item_home.view.*
 
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.list_item_home.view.*
  * Created by Stephane on 16/12/2018
  */
 
-class AdapterListHomePage(private val userRecipeList: List<Recipe>) : RecyclerView.Adapter<AdapterListHomePage.ViewHolder>() {
+class HomePageAdapter(private val userRecipeList: List<Recipe>) : RecyclerView.Adapter<HomePageAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val txtNameItem = itemView.itemListHomeName
@@ -33,7 +33,7 @@ class AdapterListHomePage(private val userRecipeList: List<Recipe>) : RecyclerVi
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val itemRecipe: Recipe = userRecipeList[p1]
 
-        p0.txtNameItem.text = "Coucou"
+        p0.txtNameItem.text = itemRecipe.name
     }
 
 

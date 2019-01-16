@@ -1,11 +1,14 @@
 package com.iutorsay.recipesapplication.data.entities
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.*
 
-@Entity(tableName = "instructions")
+@Entity(
+    tableName = "instructions",
+    foreignKeys = [ForeignKey(entity = Recipe::class, parentColumns = ["id"], childColumns = ["recipe_id"])],
+    indices = [Index("recipe_id")]
+)
 data class Instruction(
-    @PrimaryKey @ColumnInfo(name = "id") val instructionId: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val instructionId: Int,
+    @ColumnInfo(name = "recipe_id") var recipeId: Int,
     var text: String
 )
