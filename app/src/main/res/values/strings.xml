@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">RecipesApplication</string>
+    <string name="app_name">Mes Recettes</string>
+    <string name="recipe_creation">Création d\'une recette</string>
+    <string name="recipe_name">Nom de la recette</string>
+    <string name="recipe_description">Description</string>
+    <string name="recipe_ingredient">Ingrédient</string>
+    <string name="recipe_ingredients">Ingrédients</string>
+    <string name="recipe_instruction">Étape</string>
+    <string name="recipe_instructions">Étapes</string>
+    <string name="recipe_quantity">Quantité</string>
+    <string name="recipe_step">Étape</string>
+    <string name="add_instruction">Ajouter une instruction</string>
+    <string name="add_ingredient">Ajouter un ingrédient</string>
+    <string name="ingredients_list_empty">La liste des ingrédients ne peut pas être vide</string>
+    <string name="instructions_list_empty">La liste des instructions ne peut pas être vide</string>
 </resources>

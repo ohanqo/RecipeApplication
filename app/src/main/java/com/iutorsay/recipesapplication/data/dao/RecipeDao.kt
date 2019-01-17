@@ -8,7 +8,7 @@ import com.iutorsay.recipesapplication.data.relations.RecipeWithIngredients
 @Dao
 interface RecipeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(recipe: Recipe)
+    fun insert(recipe: Recipe) : Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(recipes: List<Recipe>)

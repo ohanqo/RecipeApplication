@@ -8,20 +8,23 @@ import android.content.Context
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.iutorsay.recipesapplication.data.dao.IngredientDao
+import com.iutorsay.recipesapplication.data.dao.InstructionDao
 import com.iutorsay.recipesapplication.data.dao.RecipeDao
 import com.iutorsay.recipesapplication.data.entities.Ingredient
+import com.iutorsay.recipesapplication.data.entities.Instruction
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.utilities.DATABASE_NAME
 import com.iutorsay.recipesapplication.workers.SeedDatabaseWorker
 
 @Database(
-    entities = [Recipe::class, Ingredient::class],
+    entities = [Recipe::class, Ingredient::class, Instruction::class],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
     abstract fun ingredientDao(): IngredientDao
+    abstract fun instructionDao(): InstructionDao
 
     companion object {
         @Volatile private var instance: AppDatabase? = null
