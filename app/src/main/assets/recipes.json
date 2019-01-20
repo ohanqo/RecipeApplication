@@ -2,6 +2,8 @@
   {
     "recipeId": "1",
     "name": "Madeleines",
+    "description": "Des madeleines moelleuses et parfumées au bon goût d'antan.",
+    "pictureUrl": "https://images.unsplash.com/photo-1508137368284-90070818e0ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
     "ingredients": [
       {
         "name": "beurre",

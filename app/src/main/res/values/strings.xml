@@ -13,4 +13,8 @@
     <string name="add_ingredient">Ajouter un ingrédient</string>
     <string name="ingredients_list_empty">La liste des ingrédients ne peut pas être vide</string>
     <string name="instructions_list_empty">La liste des instructions ne peut pas être vide</string>
+    <string name="menu_home">Accueil</string>
+    <string name="menu_search">Rechercher</string>
+    <string name="menu_library">Bibliothèque</string>
+    <string name="cd_recipe_image">Image de la recette</string>
 </resources>
