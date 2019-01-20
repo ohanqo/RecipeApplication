@@ -77,7 +77,8 @@ class RecipeCreationActivity : AppCompatActivity() {
 
     private fun createRecipe() {
         if (hasNoErrors()) {
-            val index = RecipeRepository.getInstance().insert(Recipe(0, recipeEditTextName.text.toString())).toInt()
+            val recipe = Recipe(0, recipeEditTextName.text.toString(), recipeEditTextDescription.text.toString(), "")
+            val index = RecipeRepository.getInstance().insert(recipe).toInt()
             EditIngredientsAdapter.ingredients.forEach { ingredient -> ingredient.recipeId = index }
             EditInstructionsAdapter.instructions.forEach { instruction -> instruction.recipeId = index }
 
