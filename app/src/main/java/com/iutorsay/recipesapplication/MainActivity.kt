@@ -1,23 +1,18 @@
 package com.iutorsay.recipesapplication
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.View
-import com.iutorsay.recipesapplication.adapters.HomePageAdapter
-import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
-import com.iutorsay.recipesapplication.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import android.support.v4.app.Fragment
+import android.util.Log
+import android.view.MenuItem
+
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var viewmodel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,19 +21,41 @@ class MainActivity : AppCompatActivity() {
         toolbar.toolbar_title.text = resources.getString(R.string.app_name)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        viewmodel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        handleNavigationClick()
 
-        viewmodel.recipes.observe(this, Observer { recipes ->
-            recipes?.let {
-                recyclelistRecipeHomePage.apply {
-                    layoutManager = LinearLayoutManager(this@MainActivity)
-                    adapter  = HomePageAdapter(recipes)
+        showFragment(MainListFragment())
+    }
+
+    private fun handleNavigationClick() {
+        navigation.setOnNavigationItemSelectedListener { selectedItem ->
+            when (selectedItem.itemId) {
+                R.id.home -> {
+                    showFragment(MainListFragment())
+                    return@setOnNavigationItemSelectedListener true
                 }
             }
-        })
+            return@setOnNavigationItemSelectedListener false
+        }
+    }
+
+    private fun showFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, fragment)
+            .commit()
     }
 
     fun openRecipeCreationActivity(v: View) {
         startActivity(Intent(this, RecipeCreationActivity::class.java))
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> this.onBackPressed()
+        }
+
+        toolbar.toolbar_title.text = resources.getString(R.string.app_name)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+        return super.onOptionsItemSelected(item)
     }
 }
