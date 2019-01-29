@@ -1,15 +1,12 @@
 package com.iutorsay.recipesapplication.adapters
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.iutorsay.recipesapplication.R
-import com.iutorsay.recipesapplication.RecipeDetailActivity
 import com.iutorsay.recipesapplication.RecipeDetailFragment
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.databinding.RecipeCardBinding
