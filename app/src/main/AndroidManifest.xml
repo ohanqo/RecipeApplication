@@ -12,7 +12,10 @@
             android:label="@string/app_name"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <!-- Utiliser configChanges empêche la destruction/creation de l'activité lorsque la vue change d'orientation, toutes les donnees restent en place -->
+        <activity   android:name=".MainActivity"
+                    android:launchMode="singleTop"
+                    android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
