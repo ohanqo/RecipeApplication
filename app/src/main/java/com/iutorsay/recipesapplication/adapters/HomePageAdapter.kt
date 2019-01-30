@@ -33,9 +33,6 @@ class HomePageAdapter(private val context: Context, private val userRecipeList: 
 
 
         holder.itemView.setOnClickListener {
-            //val intent = Intent(it.context, RecipeDetailActivity::class.java)
-            //intent.putExtra("recipe", recipe)
-            //it.context.startActivity(intent)
             val manager = (context as AppCompatActivity).supportFragmentManager
             val detailFragment = RecipeDetailFragment()
             val bundle = Bundle()

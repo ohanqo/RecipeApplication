@@ -2,7 +2,6 @@ package com.iutorsay.recipesapplication
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -11,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iutorsay.recipesapplication.adapters.HomePageAdapter
+import com.iutorsay.recipesapplication.fragments.creation.NameFragment
 import com.iutorsay.recipesapplication.utilities.replaceFragment
 import com.iutorsay.recipesapplication.viewmodels.MainListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -51,7 +51,7 @@ class MainListFragment : Fragment() {
         })
 
         button.setOnClickListener {
-            replaceFragment(context as AppCompatActivity, R.id.content, RecipeCreationFragment())
+            replaceFragment(context as AppCompatActivity, R.id.content, NameFragment())
         }
     }
 

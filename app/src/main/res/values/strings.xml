@@ -18,4 +18,8 @@
     <string name="menu_library">Bibliothèque</string>
     <string name="cd_recipe_image">Image de la recette</string>
     <string name="recipe_preparation">Préparer la recette</string>
+    <string name="creation_title">Indiquer un nom et une petite description de votre recette</string>
+    <string name="creation_recipe_name">Nom de la recette</string>
+    <string name="creation_recipe_description">Description de la recette</string>
+    <string name="next">Suivant</string>
 </resources>

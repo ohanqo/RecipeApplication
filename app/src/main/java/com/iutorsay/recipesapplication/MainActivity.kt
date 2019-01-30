@@ -44,10 +44,6 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun openRecipeCreationActivity(v: View) {
-        startActivity(Intent(this, RecipeCreationActivity::class.java))
-    }
-
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> this.onBackPressed()

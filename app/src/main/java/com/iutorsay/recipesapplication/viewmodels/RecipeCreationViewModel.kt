@@ -1,7 +1,12 @@
 package com.iutorsay.recipesapplication.viewmodels
 
-import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
+import android.util.Log
 
 class RecipeCreationViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val currentName = MutableLiveData<String>()
+
+    val currentDescription = MutableLiveData<String>()
+
 }
