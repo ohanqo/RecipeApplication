@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.toolbar.view.*
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.main_list_fragment.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -49,9 +50,14 @@ class MainActivity : AppCompatActivity() {
             android.R.id.home -> this.onBackPressed()
         }
 
-        toolbar.toolbar_title.text = resources.getString(R.string.app_name)
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(false)
+        // Si on est sur l'écran d'accueil, on change le titre de la toolbar
+        val isOnMainFragment = supportFragmentManager.findFragmentById(R.id.main_fragment)?.isVisible
+        isOnMainFragment?.let {
+            toolbar.toolbar_title.text = resources.getString(R.string.app_name)
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            supportActionBar?.setDisplayShowHomeEnabled(false)
+        }
+
         return super.onOptionsItemSelected(item)
     }
 }

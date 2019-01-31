@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainListFragment">
@@ -29,7 +30,7 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.552"
-                android:id="@+id/button" android:layout_marginBottom="8dp"
+                android:id="@+id/button_next" android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/main_recipe_list"/>
 
     </android.support.constraint.ConstraintLayout>

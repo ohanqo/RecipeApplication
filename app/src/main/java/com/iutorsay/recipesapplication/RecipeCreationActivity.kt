@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.View
-import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
 import com.iutorsay.recipesapplication.adapters.EditInstructionsAdapter
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
@@ -24,7 +23,7 @@ import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import java.io.FileOutputStream
 
-
+/*
 class RecipeCreationActivity : AppCompatActivity() {
 
     private lateinit var takePhotoView: View
@@ -49,7 +48,7 @@ class RecipeCreationActivity : AppCompatActivity() {
             adapter = recipeEditInstructionsAdapter
         }
 
-        ingredientsRecyclerView.apply {
+        ingredients_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@RecipeCreationActivity)
             adapter = recipeEditIngredientsAdapter
         }
@@ -159,3 +158,4 @@ class RecipeCreationActivity : AppCompatActivity() {
         recipePictureHolder.addView(takePhotoView)
     }
 }
+*/

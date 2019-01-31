@@ -23,7 +23,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.552"
-            android:id="@+id/button" android:layout_marginBottom="8dp"
+            android:id="@+id/button_next" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/recyclelistRecipeHomePage"/>
 
 </android.support.constraint.ConstraintLayout>

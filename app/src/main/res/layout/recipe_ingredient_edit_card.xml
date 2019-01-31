@@ -19,14 +19,14 @@
                 android:hint="@string/recipe_ingredient" android:inputType="text" android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/deleteIngredient"
                 app:layout_constraintStart_toStartOf="parent"/>
-        <Button
+        <ImageButton
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:background="@drawable/ic_delete_red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/deleteIngredient"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@style/Widget.AppCompat.Button.Borderless" app:layout_constraintTop_toTopOf="parent"
+                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" android:textSize="@dimen/font_small"/>
         <EditText
                 android:layout_width="0dp"

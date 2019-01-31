@@ -50,7 +50,7 @@ class MainListFragment : Fragment() {
             }
         })
 
-        button.setOnClickListener {
+        button_next.setOnClickListener {
             replaceFragment(context as AppCompatActivity, R.id.content, NameFragment())
         }
     }
