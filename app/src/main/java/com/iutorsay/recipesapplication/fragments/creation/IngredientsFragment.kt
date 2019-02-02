@@ -4,18 +4,19 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.iutorsay.recipesapplication.R
-import com.iutorsay.recipesapplication.adapters.DetailIngredientAdapter
 import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
-import com.iutorsay.recipesapplication.adapters.EditInstructionsAdapter
 //import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
 import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.databinding.FragmentIngredientsBinding
+import com.iutorsay.recipesapplication.utilities.addFragment
+import com.iutorsay.recipesapplication.utilities.replaceFragment
 import com.iutorsay.recipesapplication.viewmodels.RecipeCreationViewModel
 import kotlinx.android.synthetic.main.fragment_ingredients.*
 
@@ -54,6 +55,14 @@ class IngredientsFragment : Fragment() {
         editIngredientAdapter.setIngredients(creationViewModel.currentIngredients)
 
         button_add_ingredient.setOnClickListener { addIngredientToList() }
+
+        button_next.setOnClickListener {
+            if (creationViewModel.currentIngredients.size > 0) {
+                addFragment(context as AppCompatActivity, R.id.content, StepsFragment())
+            } else {
+                Toast.makeText(context, resources.getText(R.string.ingredients_list_empty), Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun onIngredientCloseButtonClick(ingredient: Ingredient) {
@@ -76,7 +85,7 @@ class IngredientsFragment : Fragment() {
 
         if (creationViewModel.inputIngredientName.value.isNullOrBlank()) {
             hasNoErrros = false
-            input_name.error = "Le nom de l'ingrédient ne peut pas être vide"
+            input_ingredient.error = "Le nom de l'ingrédient ne peut pas être vide"
         }
 
         if (creationViewModel.inputIngredientQuantity.value.isNullOrBlank()) {

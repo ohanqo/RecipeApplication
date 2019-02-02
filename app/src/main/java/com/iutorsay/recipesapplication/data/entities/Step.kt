@@ -10,5 +10,6 @@ import android.arch.persistence.room.*
 data class Instruction(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val instructionId: Int,
     @ColumnInfo(name = "recipe_id") var recipeId: Int,
-    var text: String
+    var text: String,
+    var timing: Int ? = null
 )

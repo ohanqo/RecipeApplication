@@ -57,7 +57,7 @@ class NameFragment : Fragment() {
         var hasNoErrors = true
 
         if (creationViewModel.currentName.value.isNullOrBlank()) {
-            input_name.error = "Le nom ne peut pas être vide"
+            input_step.error = "Le nom ne peut pas être vide"
             hasNoErrors = false
         }
 

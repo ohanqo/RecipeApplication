@@ -9,10 +9,10 @@
     <string name="recipe_instructions">Étapes</string>
     <string name="recipe_quantity">Quantité</string>
     <string name="recipe_step">Étape</string>
-    <string name="add_instruction">Ajouter une instruction</string>
+    <string name="add_instruction">Ajouter une étape</string>
     <string name="add_ingredient">Ajouter un ingrédient</string>
     <string name="ingredients_list_empty">La liste des ingrédients ne peut pas être vide</string>
-    <string name="instructions_list_empty">La liste des instructions ne peut pas être vide</string>
+    <string name="instructions_list_empty">La liste des étapes ne peut pas être vide</string>
     <string name="menu_home">Accueil</string>
     <string name="menu_search">Rechercher</string>
     <string name="menu_library">Bibliothèque</string>
@@ -23,4 +23,6 @@
     <string name="creation_recipe_description">Description de la recette</string>
     <string name="next">Suivant</string>
     <string name="creation_ingredients_title">Indiquer les ingrédients de votre recette</string>
+    <string name="creation_steps_title">Indiquer les étapes de votre recette</string>
+    <string name="timing">Durée (mn)</string>
 </resources>

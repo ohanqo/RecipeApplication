@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/layout">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
                 name="viewmodel"
@@ -14,7 +14,7 @@
             android:layout_height="match_parent">
 
         <TextView
-                android:text="@string/creation_ingredients_title"
+                android:text="@string/creation_steps_title"
                 android:fontFamily="@font/circular_std_bold"
                 android:textSize="@dimen/font_larger"
                 android:textColor="@color/black"
@@ -30,7 +30,7 @@
                 app:cardElevation="@dimen/spacing_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/button_add_ingredient"
+                app:layout_constraintTop_toBottomOf="@+id/button_add_step"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:cardCornerRadius="@dimen/spacing_tiny"
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                     android:orientation="vertical">
 
                 <TextView
-                        android:text="@string/recipe_ingredients"
+                        android:text="@string/recipe_instructions"
                         android:padding="@dimen/spacing_normal"
                         android:fontFamily="@font/circular_std_bold"
                         android:textColor="@color/black"
@@ -64,21 +64,21 @@
                         android:paddingStart="@dimen/spacing_normal"
                         android:paddingEnd="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_normal"
-                        android:id="@+id/ingredients_recycler_view">
+                        android:id="@+id/steps_recycler_view">
                 </android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
         </android.support.design.card.MaterialCardView>
 
         <Button
-                android:text="@string/add_ingredient"
+                android:text="@string/add_instruction"
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp" android:id="@+id/button_add_ingredient" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/input_quantity"/>
+                android:layout_marginEnd="16dp" android:id="@+id/button_add_step"
+                android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/input_timing"/>
 
         <android.support.design.button.MaterialButton
                 android:text="@string/next"
@@ -94,26 +94,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:hint="@string/recipe_ingredient"
-                android:text="@={viewmodel.inputIngredientName}"
+                android:hint="@string/recipe_instruction"
+                android:text="@={viewmodel.inputStep}"
                 android:ems="10"
-                android:id="@+id/input_ingredient"
+                android:id="@+id/input_step"
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/title"
                 android:layout_marginTop="32dp"/>
         <EditText
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:hint="@string/recipe_quantity"
-                android:text="@={viewmodel.inputIngredientQuantity}"
+                android:inputType="numberSigned"
+                android:text="@={viewmodel.inputStepTiming}"
+                android:hint="@string/timing"
                 android:ems="10"
-                android:id="@+id/input_quantity"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/input_ingredient"/>
+                android:id="@+id/input_timing" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/input_step" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
