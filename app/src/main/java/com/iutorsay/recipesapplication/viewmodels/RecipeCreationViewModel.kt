@@ -2,6 +2,7 @@ package com.iutorsay.recipesapplication.viewmodels
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.graphics.Bitmap
 import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.data.entities.Step
 
@@ -21,4 +22,6 @@ class RecipeCreationViewModel : ViewModel() {
     val inputStep = MutableLiveData<String>()
 
     val inputStepTiming = MutableLiveData<String>()
+
+    var recipePhoto : Bitmap? = null
 }

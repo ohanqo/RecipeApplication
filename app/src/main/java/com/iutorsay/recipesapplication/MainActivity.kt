@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import android.graphics.Typeface
+import android.os.Build
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar as Toolbar)
         toolbar.toolbar_title.text = resources.getString(R.string.app_name)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            toolbar.toolbar_title.typeface = resources.getFont(R.font.circular_std_bold)
+        }
 
         handleNavigationClick()
 

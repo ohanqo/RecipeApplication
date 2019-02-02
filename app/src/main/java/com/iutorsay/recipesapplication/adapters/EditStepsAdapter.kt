@@ -23,9 +23,8 @@ class EditStepsAdapter(private val clickListener: (Step) -> Unit) : RecyclerView
     override fun onBindViewHolder(holder: StepHolder, position: Int) {
         val currentStep = steps[position]
         holder.stepTextView.text = currentStep.text
-        Log.d("__TIMING", currentStep.timing.toString())
         currentStep.timing?.let {
-            holder.stepTimingTextView.text = "Durée:  $it"
+            holder.stepTimingTextView.text = "Durée:  $it mn"
         }
         (holder).bind(currentStep, clickListener)
     }

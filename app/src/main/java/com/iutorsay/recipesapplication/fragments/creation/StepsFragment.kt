@@ -4,14 +4,17 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.adapters.EditStepsAdapter
 import com.iutorsay.recipesapplication.data.entities.Step
 import com.iutorsay.recipesapplication.databinding.FragmentStepsBinding
+import com.iutorsay.recipesapplication.utilities.addFragment
 import com.iutorsay.recipesapplication.viewmodels.RecipeCreationViewModel
 import kotlinx.android.synthetic.main.fragment_steps.*
 
@@ -51,6 +54,14 @@ class StepsFragment : Fragment() {
         editStepsAdapter.setSteps(creationViewModel.currentSteps)
 
         button_add_step.setOnClickListener { addStepToList() }
+
+        button_next.setOnClickListener {
+            if (creationViewModel.currentSteps.size > 0) {
+                addFragment(context as AppCompatActivity, R.id.content, PhotoFragment())
+            } else {
+                Toast.makeText(context, resources.getText(R.string.instructions_list_empty), Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun onStepCloseButtonClick(step: Step) {

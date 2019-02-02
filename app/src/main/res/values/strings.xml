@@ -18,11 +18,14 @@
     <string name="menu_library">Bibliothèque</string>
     <string name="cd_recipe_image">Image de la recette</string>
     <string name="recipe_preparation">Préparer la recette</string>
-    <string name="creation_title">Indiquer un nom et une petite description de votre recette</string>
+    <string name="creation_title">Indiquez un nom et une petite description de votre recette</string>
     <string name="creation_recipe_name">Nom de la recette</string>
     <string name="creation_recipe_description">Description de la recette</string>
     <string name="next">Suivant</string>
-    <string name="creation_ingredients_title">Indiquer les ingrédients de votre recette</string>
-    <string name="creation_steps_title">Indiquer les étapes de votre recette</string>
+    <string name="creation_ingredients_title">Indiquez les ingrédients de votre recette</string>
+    <string name="creation_steps_title">Indiquez les étapes de votre recette</string>
     <string name="timing">Durée (mn)</string>
+    <string name="creation_photo_title">Vous pouvez ajouter une photo de votre recette</string>
+    <string name="creation_finish">Terminer la création</string>
+    <string name="error_photo">Une erreur est survenue lors de la sélection de la photo</string>
 </resources>

@@ -7,7 +7,7 @@ import android.arch.persistence.room.*
     foreignKeys = [ForeignKey(entity = Recipe::class, parentColumns = ["id"], childColumns = ["recipe_id"])],
     indices = [Index("recipe_id")]
 )
-data class Instruction(
+data class Step(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val instructionId: Int,
     @ColumnInfo(name = "recipe_id") var recipeId: Int,
     var text: String,
