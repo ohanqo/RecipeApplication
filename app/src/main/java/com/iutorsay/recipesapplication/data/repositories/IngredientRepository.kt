@@ -1,6 +1,7 @@
 package com.iutorsay.recipesapplication.data.repositories
 
 import android.os.AsyncTask
+import android.util.Log
 import com.iutorsay.recipesapplication.data.AppDatabase
 import com.iutorsay.recipesapplication.data.dao.IngredientDao
 import com.iutorsay.recipesapplication.data.entities.Ingredient

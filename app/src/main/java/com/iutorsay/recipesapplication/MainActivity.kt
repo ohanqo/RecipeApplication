@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import android.graphics.Typeface
 import android.os.Build
+import android.util.Log
+import com.iutorsay.recipesapplication.utilities.replaceFragment
+import com.iutorsay.recipesapplication.utilities.replaceFragmentWithoutBackStack
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,9 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.content, fragment)
-            .commit()
+        replaceFragmentWithoutBackStack(this as AppCompatActivity, R.id.content, fragment)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -51,14 +52,19 @@ class MainActivity : AppCompatActivity() {
             android.R.id.home -> this.onBackPressed()
         }
 
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
         // Si on est sur l'écran d'accueil, on change le titre de la toolbar
         val isOnMainFragment = supportFragmentManager.findFragmentById(R.id.main_fragment)?.isVisible
+
         isOnMainFragment?.let {
             toolbar.toolbar_title.text = resources.getString(R.string.app_name)
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
             supportActionBar?.setDisplayShowHomeEnabled(false)
         }
-
-        return super.onOptionsItemSelected(item)
     }
 }

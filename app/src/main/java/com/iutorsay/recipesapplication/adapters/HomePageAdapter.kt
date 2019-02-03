@@ -11,6 +11,8 @@ import com.iutorsay.recipesapplication.RecipeDetailFragment
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.databinding.RecipeCardBinding
 import android.support.v7.app.AppCompatActivity
+import com.iutorsay.recipesapplication.utilities.addFragment
+import com.iutorsay.recipesapplication.utilities.replaceFragment
 
 class HomePageAdapter(private val context: Context, private val userRecipeList: List<Recipe>) : RecyclerView.Adapter<HomePageAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,17 +35,13 @@ class HomePageAdapter(private val context: Context, private val userRecipeList: 
 
 
         holder.itemView.setOnClickListener {
-            val manager = (context as AppCompatActivity).supportFragmentManager
             val detailFragment = RecipeDetailFragment()
             val bundle = Bundle()
 
             bundle.putSerializable("recipe", recipe)
             detailFragment.arguments = bundle
 
-            manager.beginTransaction()
-                .replace(R.id.content, detailFragment)
-                .addToBackStack(null)
-                .commit()
+            replaceFragment(context as AppCompatActivity, R.id.content, detailFragment)
         }
     }
 

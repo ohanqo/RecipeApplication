@@ -43,7 +43,7 @@ class RecipeDetailFragment : Fragment() {
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        bindImageFromUrl(recipe_picture, recipe.pictureUrl)
+        bindImageFromUrl(recipe_picture, recipe)
         recipe_description.text = recipe.description
 
         ingredients.observe(this, Observer { ingredients ->

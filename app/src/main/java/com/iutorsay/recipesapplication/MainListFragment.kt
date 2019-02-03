@@ -46,6 +46,7 @@ class MainListFragment : Fragment() {
                 main_recipe_list.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter  = HomePageAdapter(activity!!, recipes)
+                    setHasFixedSize(true)
                 }
             }
         })
@@ -54,5 +55,4 @@ class MainListFragment : Fragment() {
             replaceFragment(context as AppCompatActivity, R.id.content, NameFragment())
         }
     }
-
 }

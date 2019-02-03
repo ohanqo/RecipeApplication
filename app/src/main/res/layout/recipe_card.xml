@@ -28,7 +28,7 @@
                     android:background="#888"
                     android:id="@+id/recipe_picture"
                     android:contentDescription="@string/cd_recipe_image"
-                    app:imageFromUrl="@{recipe.pictureUrl}"
+                    app:imageFromUrl="@{recipe}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" android:scaleType="centerCrop"

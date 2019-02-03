@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,10 @@ class PhotoFragment : Fragment() {
             EasyImage.openCamera(this, 0)
         }
 
+        button_finish_creation.setOnClickListener {
+            creationViewModel.createRecipe(context as AppCompatActivity)
+        }
+
         if (creationViewModel.recipePhoto == null) {
             picture_holder.addView(takePhotoView)
         } else {
@@ -84,6 +89,7 @@ class PhotoFragment : Fragment() {
     }
 
     private fun removePhoto() {
+        creationViewModel.recipePhoto = null
         picture_holder.removeAllViews()
         picture_holder.addView(takePhotoView)
     }
