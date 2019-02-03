@@ -4,7 +4,6 @@ import android.os.AsyncTask
 import com.iutorsay.recipesapplication.data.AppDatabase
 import com.iutorsay.recipesapplication.data.dao.IngredientDao
 import com.iutorsay.recipesapplication.data.entities.Ingredient
-import com.iutorsay.recipesapplication.data.entities.Recipe
 
 class IngredientRepository private constructor(private val databaseInstance: AppDatabase) {
     private val ingredientDao = databaseInstance.ingredientDao()

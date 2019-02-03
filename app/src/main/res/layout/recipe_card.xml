@@ -10,13 +10,15 @@
                 type="com.iutorsay.recipesapplication.data.entities.Recipe"/>
     </data>
 
-    <android.support.design.card.MaterialCardView app:cardCornerRadius="@dimen/spacing_tiny"
-                                                  android:layout_marginBottom="@dimen/spacing_small"
-                                                  android:layout_width="match_parent"
-                                                  android:layout_height="wrap_content">
+    <android.support.design.card.MaterialCardView
+            app:cardCornerRadius="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                     android:layout_height="wrap_content">
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
             <ImageView
@@ -26,7 +28,7 @@
                     android:background="#888"
                     android:id="@+id/recipe_picture"
                     android:contentDescription="@string/cd_recipe_image"
-                    app:imageFromUrl="@{recipe.pictureUrl}"
+                    app:imageFromUrl="@{recipe}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" android:scaleType="centerCrop"

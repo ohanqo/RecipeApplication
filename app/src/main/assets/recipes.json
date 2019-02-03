@@ -6,28 +6,333 @@
     "pictureUrl": "https://images.unsplash.com/photo-1508137368284-90070818e0ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
     "ingredients": [
       {
-        "name": "beurre",
-        "quantity": "200g"
+        "name": "oeuf",
+        "quantity": "3"
       },
       {
         "name": "sucre",
-        "quantity": "200g"
+        "quantity": "150 g"
       },
       {
         "name": "farine",
-        "quantity": "200g"
+        "quantity": "200 g"
       },
       {
-        "name": "oeufs",
-        "quantity": "4"
+        "name": "eau de fleur d'oranger",
+        "quantity": "2 cuillères à soupe"
+      },
+      {
+        "name": "levure chimique",
+        "quantity": "8 g"
+      },
+      {
+        "name": "beurre",
+        "quantity": "100 g"
+      },
+      {
+        "name": "lait",
+        "quantity": "50 g"
+      }
+    ],
+    "steps": [
+      {
+        "stepId" : 1,
+        "text" : "Préchauffer le four à 240°C (th 8). Faire fondre le beurre dans une casserole à feux foux, réserver.",
+        "timing" : null
+      },
+      {
+        "stepId" : 2,
+        "text" : "Mélanger les oeufs avec le sucre, jusque'à ce que le mélange blanchisse.",
+        "timing" : null
+      },
+      {
+        "stepId" : 3,
+        "text" : "Ajouter ensuite la fleur d'oranger et 40g de lait.",
+        "timing" : null
+      },
+      {
+        "stepId" : 4,
+        "text" : "Ajouter la farine et la levure chimique.",
+        "timing" : null
+      },
+      {
+        "stepId" : 5,
+        "text" : "C'est ensuite le tour du beurre et le restant du lait ; laisser reposer 15 min.",
+        "timing" : 15
+      },
+      {
+        "stepId" : 6,
+        "text" : "Beurrer les moules à madeleines et verser la préparation dedans (mais pas jusqu'en haut, les madeleines vont gonfler !).",
+        "timing" : null
+      },
+      {
+        "stepId" : 7,
+        "text" : "Enfourner à 240°C (th 8), et baisser au bout de 5 min à 200°C (th 6-7); laisser encore 10 min. Surveiller bien la cuisson !",
+        "timing" : 15
+      },
+      {
+        "stepId" : 8,
+        "text" : "Démouler dès la sortie du four.",
+        "timing" : null
+      }
+    ]
+  },
+  {
+    "recipeId": "2",
+    "name": "Blanquette de veau",
+    "description": "Ma blanquette est bonne...",
+    "pictureUrl": "https://image.afcdn.com/recipe/20160401/3857_w600.jpg",
+    "ingredients": [
+      {
+        "name": "veau",
+        "quantity": "1 kg"
+      },
+      {
+        "name": "bouillon de légumes",
+        "quantity": "1 cube"
+      },
+      {
+        "name": "bouillon de poule",
+        "quantity": "1"
+      },
+      {
+        "name": "carottes",
+        "quantity": "2"
+      },
+      {
+        "name": "oignon jaune",
+        "quantity": "1"
+      },
+      {
+        "name": "petite boîte de champignon (coupés)",
+        "quantity": "1"
+      },
+      {
+        "name": "petit pot de crème fraîche",
+        "quantity": "1"
+      },
+      {
+        "name": "citron",
+        "quantity": "1"
+      },
+      {
+        "name": "jaune d'oeuf",
+        "quantity": "1"
+      },
+      {
+        "name": "farine",
+        "quantity": "1 sachet"
+      },
+      {
+        "name": "vin blanc",
+        "quantity": "25 cl"
+      },
+      {
+        "name": "poivre",
+        "quantity": "1 pincée"
       },
       {
         "name": "sel",
         "quantity": "1 pincée"
+      }
+    ],
+    "steps": [
+      {
+        "stepId" : 1,
+        "text" : "Faire revenir la viande dans un peu de beurre doux jusqu'à ce que les morceaux soient un peu dorés.",
+        "timing" : null
       },
       {
-        "name": "sucre vanillé",
-        "quantity": "1 paquet"
+        "stepId" : 2,
+        "text" : "Saupoudrer de 2 cuillères de farine. Bien remuer.",
+        "timing" : null
+      },
+      {
+        "stepId" : 3,
+        "text" : "Ajouter 2 ou 3 verres d'eau, les cubes de bouillon, le vin et remuer. Ajouter de l'eau si nécessaire pour couvrir.",
+        "timing" : null
+      },
+      {
+        "stepId" : 4,
+        "text" : "Couper les carottes en rondelles et émincer les oignons puis les incorporer à la viande, ainsi que les champignons.",
+        "timing" : null
+      },
+      {
+        "stepId" : 5,
+        "text" : "Laisser mijoter à feu très doux environ 1h30 à 2h00 en remuant.",
+        "timing" : 105
+      },
+      {
+        "stepId" : 6,
+        "text" : "Si nécessaire, ajouter de l'eau de temps en temps.",
+        "timing" : null
+      },
+      {
+        "stepId" : 7,
+        "text" : "Dans un bol, bien mélanger la crème fraîche, le jaune d’oeuf et le jus de citron. Ajouter ce mélange au dernier moment, bien remuer et servir tout de suite.",
+        "timing" : null
+      }
+    ]
+  },
+  {
+    "recipeId": "3",
+    "name": "Saucisson brioché",
+    "description": "Un peu comme un hotdog revisité !",
+    "pictureUrl": "https://image.afcdn.com/recipe/20171019/73665_w600cxt0cyt0cxb3456cyb2304.jpg",
+    "ingredients": [
+      {
+        "name": "saucisson à cuire",
+        "quantity": "1"
+      },
+      {
+        "name": "oeuf",
+        "quantity": "3"
+      },
+      {
+        "name": "farine",
+        "quantity": "200 g"
+      },
+      {
+        "name": "levure chimique",
+        "quantity": "1 sachet"
+      },
+      {
+        "name": "crème fraîche épaisse",
+        "quantity": "15 cl"
+      },
+      {
+        "name": "sel",
+        "quantity": "1 sachet"
+      }
+    ],
+    "steps": [
+      {
+        "stepId" : 1,
+        "text" : "Préchauffer le four à thermostat 5 (150°C).",
+        "timing" : null
+      },
+      {
+        "stepId" : 2,
+        "text" : "Battre les oeufs avec 2 pincées de sel. Ajouter le verre de crème et bien mélanger. Incorporer la farine mélangée à la levure chimique.",
+        "timing" : null
+      },
+      {
+        "stepId" : 3,
+        "text" : "Beurrer ou chemiser un moule à cake (avec du papier sulfurisé), déposer un tiers de la pâte, poser le saucisson dessus (ne pas le piquer à la fouchette sous peine de voir s'échapper le gras!), puis le recouvrir de la pâte restante.",
+        "timing" : null
+      },
+      {
+        "stepId" : 4,
+        "text" : "Cuire au four à thermostat 5 pendant 40 mn.",
+        "timing" : 40
+      }
+    ]
+  },
+  {
+    "recipeId": "4",
+    "name": "Côtes de porc au miel",
+    "description": "Des belles pièces de porc délicatement caramélisées.",
+    "pictureUrl": "https://lecheveusurlasoupe.files.wordpress.com/2016/07/coteporc3.jpeg?w=620",
+    "ingredients": [
+      {
+        "name": "côte de porc",
+        "quantity": "4"
+      },
+      {
+        "name": "miel",
+        "quantity": "5 cuillères à soupe"
+      },
+      {
+        "name": "sauce soja",
+        "quantity": "1 verre"
+      }
+    ],
+    "steps": [
+      {
+        "stepId" : 1,
+        "text" : "Mettre 3 cuillères à soupe de miel et les côtes de porc dans un plat, les arroser abondamment de sauce soja, laisser marine 2 ou 3 heures!",
+        "timing" : 150
+      },
+      {
+        "stepId" : 2,
+        "text" : "Faire cuire les côtes de porc dans une sauteuse avec la marinade, ajouter les 2 dernières cuillères de miel à mi-cuisson et faire caraméliser. C'est prêt!",
+        "timing" : 10
+      },
+      {
+        "stepId" : 3,
+        "text" : "Peut se faire avec du travers de porc sur la lèchefrite du four en position grill.",
+        "timing" : null
+      }
+    ]
+  },
+  {
+    "recipeId": "5",
+    "name": "Tourte au saumon",
+    "description": "C'est pas beau mais c'est bon ...",
+    "pictureUrl": "https://image.afcdn.com/recipe/20130823/36754_w600.jpg",
+    "ingredients": [
+      {
+        "name": "pâte feuilletée",
+        "quantity": "2"
+      },
+      {
+        "name": "saumon",
+        "quantity": "2 boîtes"
+      },
+      {
+        "name": "concentré de tomates",
+        "quantity": "1 boîte"
+      },
+      {
+        "name": "oeuf entier",
+        "quantity": "3"
+      },
+      {
+        "name": "jaune d'oeuf",
+        "quantity": "1"
+      },
+      {
+        "name": "gruyère râpé",
+        "quantity": "300 g"
+      },
+      {
+        "name": "crème fraîche",
+        "quantity": "20 cl"
+      },
+      {
+        "name": "poivre",
+        "quantity": "1 sachet"
+      },
+      {
+        "name": "sel",
+        "quantity": "1 sachet"
+      }
+    ],
+    "steps": [
+      {
+        "stepId" : 1,
+        "text" : "Dans un saladier, mélanger saumon émietté (sans peau, sans arêtes), concentré de tomates, les 3 œufs entiers, le gruyère, la crème fraîche, sel, poivre.",
+        "timing" : null
+      },
+      {
+        "stepId" : 2,
+        "text" : "Sur un moule à tarte, étaler la première pâte feuilletée. Piquer la surface avec une fourchette.",
+        "timing" : null
+      },
+      {
+        "stepId" : 3,
+        "text" : "Disposer le mélange dessus. Recouvrir de la deuxième pâte feuilletée. Sceller les bord de la tourte avec du jaune d’œuf. Piquer le dessus du feuilleté avec une fourchette.",
+        "timing" : null
+      },
+      {
+        "stepId" : 4,
+        "text" : "Quadriller au pinceau le dessus avec du jaune d'oeuf.",
+        "timing" : null
+      },
+      {
+        "stepId" : 5,
+        "text" : "Cuire 25 min à 250°C.",
+        "timing" : 25
       }
     ]
   }
