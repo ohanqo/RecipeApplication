@@ -1,17 +1,14 @@
 package com.iutorsay.recipesapplication
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import com.iutorsay.recipesapplication.utilities.replaceFragmentWithoutBackStack
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.view.*
-import android.graphics.Typeface
-import android.os.Build
-import android.util.Log
-import com.iutorsay.recipesapplication.utilities.replaceFragment
-import com.iutorsay.recipesapplication.utilities.replaceFragmentWithoutBackStack
 
 
 class MainActivity : AppCompatActivity() {

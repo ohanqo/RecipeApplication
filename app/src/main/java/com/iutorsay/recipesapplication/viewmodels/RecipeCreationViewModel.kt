@@ -4,7 +4,6 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.graphics.Bitmap
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.iutorsay.recipesapplication.MainListFragment
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.data.entities.Ingredient

@@ -9,12 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iutorsay.recipesapplication.adapters.DetailIngredientAdapter
+import com.iutorsay.recipesapplication.adapters.DetailStepAdapter
 import com.iutorsay.recipesapplication.adapters.bindImageFromUrl
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
+import com.iutorsay.recipesapplication.data.repositories.StepRepository
 import com.iutorsay.recipesapplication.viewmodels.RecipeDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.card_step.*
 import kotlinx.android.synthetic.main.recipe_detail_fragment.*
 
 
@@ -38,6 +41,7 @@ class RecipeDetailFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(RecipeDetailViewModel::class.java)
         val recipe = arguments?.getSerializable("recipe") as Recipe
         val ingredients = IngredientRepository.getInstance().getRecipeIngredients(recipe.recipeId)
+        val steps = StepRepository.getInstance().getRecipeInstructions(recipe.recipeId)
 
         (activity as MainActivity).toolbar.toolbar_title.text = recipe.name
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -51,6 +55,15 @@ class RecipeDetailFragment : Fragment() {
                 recipe_ingredients.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = DetailIngredientAdapter(it)
+                }
+            }
+        })
+
+        steps.observe(this, Observer { steps ->
+            steps?.let {
+                recipe_instructions.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = DetailStepAdapter(it)
                 }
             }
         })

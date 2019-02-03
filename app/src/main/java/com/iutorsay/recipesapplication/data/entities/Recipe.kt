@@ -14,5 +14,5 @@ data class Recipe(
     val pictureUrl: String
 ) : Serializable {
     @Ignore val ingredients: List<Ingredient> = arrayListOf()
-    //@Ignore val steps: Step
+    @Ignore val steps: List<Step> = arrayListOf()
 }

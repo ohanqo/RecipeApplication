@@ -1,11 +1,9 @@
 package com.iutorsay.recipesapplication.adapters
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.data.entities.Ingredient

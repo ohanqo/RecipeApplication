@@ -24,7 +24,9 @@ class SeedDatabaseWorker(context: Context, workerParams: WorkerParameters) : Wor
             database.recipeDao().insertAll(recipeList)
             recipeList.forEach { recipe ->
                 recipe.ingredients.forEach { it.recipeId = recipe.recipeId }
+                recipe.steps.forEach { it.recipeId = recipe.recipeId }
                 database.ingredientDao().insertAll(recipe.ingredients)
+                database.instructionDao().insertAll(recipe.steps)
             }
             Result.success()
         } catch (ex: Exception) {
