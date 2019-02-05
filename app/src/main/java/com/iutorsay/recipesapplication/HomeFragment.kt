@@ -4,24 +4,21 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iutorsay.recipesapplication.adapters.HomePageAdapter
-import com.iutorsay.recipesapplication.fragments.creation.NameFragment
-import com.iutorsay.recipesapplication.utilities.replaceFragment
 import com.iutorsay.recipesapplication.viewmodels.MainListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.main_list_fragment.*
 
 
-class MainListFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainListFragment()
+        fun newInstance() = HomeFragment()
     }
 
     private lateinit var viewModel: MainListViewModel
@@ -50,9 +47,12 @@ class MainListFragment : Fragment() {
                 }
             }
         })
+    }
 
-        button_next.setOnClickListener {
-            replaceFragment(context as AppCompatActivity, R.id.content, NameFragment())
-        }
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).toolbar.toolbar_title.text = resources.getString(R.string.app_name)
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(false)
     }
 }

@@ -28,4 +28,5 @@
     <string name="creation_photo_title">Vous pouvez ajouter une photo de votre recette</string>
     <string name="creation_finish">Terminer la création</string>
     <string name="error_photo">Une erreur est survenue lors de la sélection de la photo</string>
+    <string name="create_recipe">Créer une recette</string>
 </resources>

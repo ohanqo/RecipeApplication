@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.MenuItem
 import com.iutorsay.recipesapplication.utilities.replaceFragmentWithoutBackStack
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,14 +26,18 @@ class MainActivity : AppCompatActivity() {
 
         handleNavigationClick()
 
-        showFragment(MainListFragment())
+        showFragment(HomeFragment())
     }
 
     private fun handleNavigationClick() {
         navigation.setOnNavigationItemSelectedListener { selectedItem ->
             when (selectedItem.itemId) {
                 R.id.home -> {
-                    showFragment(MainListFragment())
+                    showFragment(HomeFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.library -> {
+                    showFragment(LibraryFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
             }
@@ -50,18 +55,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-
-        // Si on est sur l'écran d'accueil, on change le titre de la toolbar
-        val isOnMainFragment = supportFragmentManager.findFragmentById(R.id.main_fragment)?.isVisible
-
-        isOnMainFragment?.let {
-            toolbar.toolbar_title.text = resources.getString(R.string.app_name)
-            supportActionBar?.setDisplayHomeAsUpEnabled(false)
-            supportActionBar?.setDisplayShowHomeEnabled(false)
-        }
     }
 }

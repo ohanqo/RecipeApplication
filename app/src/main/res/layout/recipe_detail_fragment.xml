@@ -30,8 +30,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/recipe_picture" android:textSize="@dimen/font_large"/>
 
         <android.support.design.card.MaterialCardView
-                app:cardElevation="@dimen/spacing_small"
-                app:cardCornerRadius="@dimen/spacing_normal"
+                app:cardElevation="@dimen/spacing_tiny"
+                app:cardCornerRadius="@dimen/spacing_tiny"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:layout_marginTop="24dp"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_description"
@@ -73,8 +73,8 @@
         </android.support.design.card.MaterialCardView>
 
         <android.support.design.card.MaterialCardView
-                app:cardElevation="@dimen/spacing_small"
-                app:cardCornerRadius="@dimen/spacing_normal"
+                app:cardElevation="@dimen/spacing_tiny"
+                app:cardCornerRadius="@dimen/spacing_tiny"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/materialCardView" android:layout_marginTop="24dp"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2" app:layout_constraintEnd_toEndOf="parent"
