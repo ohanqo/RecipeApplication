@@ -4,6 +4,7 @@
     <dimen name="font_large">18sp</dimen>
     <dimen name="font_normal">15sp</dimen>
     <dimen name="font_small">12sp</dimen>
+    <dimen name="font_tiny">6sp</dimen>
 
     <dimen name="spacing_huge">40dp</dimen>
     <dimen name="spacing_large">24dp</dimen>

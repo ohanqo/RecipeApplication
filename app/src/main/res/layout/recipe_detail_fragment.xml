@@ -29,14 +29,28 @@
                 android:layout_marginStart="16dp" android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_picture" android:textSize="@dimen/font_large"/>
 
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                android:id="@+id/number_button"
+                android:layout_height="wrap_content"
+                app:initialNumber="1"
+                app:textSize="@dimen/font_tiny"
+                app:layout_constraintBottom_toTopOf="@+id/materialCardView2"
+                app:backGroundColor="@color/colorAccent"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@+id/recipe_description"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"/>
+
         <android.support.design.card.MaterialCardView
                 app:cardElevation="@dimen/spacing_tiny"
                 app:cardCornerRadius="@dimen/spacing_tiny"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_marginTop="24dp"
-                app:layout_constraintTop_toBottomOf="@+id/recipe_description"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:id="@+id/materialCardView2">
+                android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:id="@+id/materialCardView2"
+                tools:layout_editor_absoluteY="266dp"
+                app:layout_constraintTop_toBottomOf="@+id/number_button">
 
             <LinearLayout
                     android:orientation="vertical"
