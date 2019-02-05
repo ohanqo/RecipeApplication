@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
 import com.iutorsay.recipesapplication.adapters.DetailIngredientAdapter
 import com.iutorsay.recipesapplication.adapters.DetailStepAdapter
 import com.iutorsay.recipesapplication.adapters.bindImageFromUrl
@@ -28,6 +29,8 @@ class RecipeDetailFragment : Fragment() {
     }
 
     private lateinit var viewModel: RecipeDetailViewModel
+
+    private var nbPeople: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +57,7 @@ class RecipeDetailFragment : Fragment() {
             ingredients?.let {
                 recipe_ingredients.apply {
                     layoutManager = LinearLayoutManager(activity)
-                    adapter = DetailIngredientAdapter(it)
+                    adapter = DetailIngredientAdapter(it, nbPeople)
                 }
             }
         })
@@ -67,5 +70,7 @@ class RecipeDetailFragment : Fragment() {
                 }
             }
         })
+
+        number_button.setOnClickListener(ElegantNumberButton.OnClickListener { nbPeople = number_button.number.toInt() })
     }
 }
