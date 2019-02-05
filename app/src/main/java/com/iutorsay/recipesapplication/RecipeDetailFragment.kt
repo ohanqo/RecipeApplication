@@ -1,5 +1,6 @@
 package com.iutorsay.recipesapplication
 
+import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
 import com.iutorsay.recipesapplication.adapters.DetailIngredientAdapter
 import com.iutorsay.recipesapplication.adapters.DetailStepAdapter
 import com.iutorsay.recipesapplication.adapters.bindImageFromUrl
+import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
 import com.iutorsay.recipesapplication.data.repositories.StepRepository
@@ -20,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.card_step.*
 import kotlinx.android.synthetic.main.recipe_detail_fragment.*
+import org.w3c.dom.Entity
 
 
 class RecipeDetailFragment : Fragment() {
@@ -29,8 +32,6 @@ class RecipeDetailFragment : Fragment() {
     }
 
     private lateinit var viewModel: RecipeDetailViewModel
-
-    private var nbPeople: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +58,7 @@ class RecipeDetailFragment : Fragment() {
             ingredients?.let {
                 recipe_ingredients.apply {
                     layoutManager = LinearLayoutManager(activity)
-                    adapter = DetailIngredientAdapter(it, nbPeople)
+                    adapter = DetailIngredientAdapter(it, 1)
                 }
             }
         })
@@ -71,6 +72,13 @@ class RecipeDetailFragment : Fragment() {
             }
         })
 
-        number_button.setOnClickListener(ElegantNumberButton.OnClickListener { nbPeople = number_button.number.toInt() })
+        number_button.setOnClickListener(ElegantNumberButton.OnClickListener {
+            ingredients.value?.let { ings ->
+                recipe_ingredients.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = DetailIngredientAdapter(ings,  number_button.number.toInt())
+                }
+            }
+        })
     }
 }

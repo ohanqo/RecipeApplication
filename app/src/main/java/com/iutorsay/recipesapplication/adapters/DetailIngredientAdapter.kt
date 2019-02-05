@@ -29,7 +29,7 @@ class DetailIngredientAdapter(private val ingredientList: List<Ingredient>, priv
         var ingredientQuantity : TextView = itemView.ingredient_quantity
     }
 
-    fun regexMultiplication(quantity : String) : String {
+    private fun regexMultiplication(quantity : String) : String {
         val reNumber = Regex("[^0-9]")
         val reUnity = Regex("[0-9]")
         val numberResult = reNumber.replace(quantity, "").toInt()*nbPeople
