@@ -16,6 +16,12 @@ class RecipeRepository private constructor(private val databaseInstance: AppData
 
     fun insert(recipe: Recipe) : Long = InsertAsyncTask(recipeDao).execute(recipe).get()
 
+    fun getFavorites() = recipeDao.getFavorites()
+
+    fun setFavorites(recipeId: Int, isFavorite: Boolean) = SetFavoriteAsyncTask(recipeDao).execute(FavoriteTaskParams(recipeId, isFavorite))
+
+    data class FavoriteTaskParams(val recipeId: Int, val isFavorite: Boolean)
+
     companion object {
         @Volatile private lateinit var instance: RecipeRepository
 
@@ -28,6 +34,10 @@ class RecipeRepository private constructor(private val databaseInstance: AppData
 
         class InsertAsyncTask internal constructor(private val recipeDao: RecipeDao) : AsyncTask<Recipe, Void, Long>() {
             override fun doInBackground(vararg params: Recipe): Long = recipeDao.insert(params[0])
+        }
+
+        class SetFavoriteAsyncTask internal constructor(private val recipeDao: RecipeDao) : AsyncTask<FavoriteTaskParams, Void, Unit>() {
+            override fun doInBackground(vararg params: FavoriteTaskParams): Unit = recipeDao.setFavorite(params[0].recipeId, params[0].isFavorite)
         }
     }
 }

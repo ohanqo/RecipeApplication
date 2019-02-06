@@ -11,7 +11,8 @@ data class Recipe(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val recipeId: Int,
     val name: String,
     val description: String,
-    val pictureUrl: String
+    val pictureUrl: String,
+    val isFavorite: Boolean
 ) : Serializable {
     @Ignore val ingredients: List<Ingredient> = arrayListOf()
     @Ignore val steps: List<Step> = arrayListOf()

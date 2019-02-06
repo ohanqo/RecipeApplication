@@ -22,4 +22,10 @@ interface RecipeDao {
     @Transaction
     @Query("SELECT * FROM recipes")
     fun getAllWithIngredients(): LiveData<List<RecipeWithIngredients>>
+
+    @Query("SELECT * FROM recipes WHERE isFavorite")
+    fun getFavorites(): LiveData<List<Recipe>>
+
+    @Query("UPDATE recipes SET isFavorite = :isFavorite WHERE id = :recipeId")
+    fun setFavorite(recipeId: Int, isFavorite: Boolean)
 }
