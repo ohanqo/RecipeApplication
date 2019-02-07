@@ -22,6 +22,7 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var viewModel: MainListViewModel
+    private lateinit var homeAdapter: HomePageAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,13 +39,17 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(MainListViewModel::class.java)
 
+        homeAdapter = HomePageAdapter(activity!!)
+
+        main_recipe_list.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter  = homeAdapter
+            setHasFixedSize(true)
+        }
+
         viewModel.recipes.observe(this, Observer { recipes ->
             recipes?.let {
-                main_recipe_list.apply {
-                    layoutManager = LinearLayoutManager(activity)
-                    adapter  = HomePageAdapter(activity!!, recipes)
-                    setHasFixedSize(true)
-                }
+                homeAdapter.submitList(it)
             }
         })
     }

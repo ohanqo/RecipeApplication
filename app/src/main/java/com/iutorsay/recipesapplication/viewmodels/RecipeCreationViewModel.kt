@@ -37,7 +37,7 @@ class RecipeCreationViewModel : ViewModel() {
     var recipePhoto : Bitmap? = null
 
     fun createRecipe(context: AppCompatActivity) {
-        val recipe = Recipe(0, currentName.value.toString(), currentDescription.value.toString(), "")
+        val recipe = Recipe(0, currentName.value.toString(), currentDescription.value.toString(), "", false)
         val index = RecipeRepository.getInstance().insert(recipe).toInt()
 
         currentIngredients.forEach { ing -> ing.recipeId = index }
