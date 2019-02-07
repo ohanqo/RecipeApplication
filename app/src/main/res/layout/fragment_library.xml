@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        android:id="@+id/library_fragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:minHeight="@dimen/spacing_huge"
+                android:minWidth="@dimen/spacing_large"
+                android:src="@drawable/ic_create_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/button_create_recipe"
+                app:layout_constraintTop_toTopOf="@+id/button_create_recipe" android:id="@+id/imageView"/>
+
+        <TextView
+                android:text="@string/create_recipe"
+                android:textSize="@dimen/font_larger"
+                android:textColor="@color/dark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/button_create_recipe"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView" android:layout_marginStart="16dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

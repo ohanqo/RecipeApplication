@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.graphics.Bitmap
 import android.support.v7.app.AppCompatActivity
-import com.iutorsay.recipesapplication.MainListFragment
+import com.iutorsay.recipesapplication.HomeFragment
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.data.entities.Recipe
@@ -53,7 +53,7 @@ class RecipeCreationViewModel : ViewModel() {
         storeRecipePhoto(index, context)
 
         popAllFragments(context)
-        replaceFragment(context, R.id.content, MainListFragment())
+        replaceFragment(context, R.id.content, HomeFragment())
         clearViewModel()
     }
 

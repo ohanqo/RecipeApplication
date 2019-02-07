@@ -6,7 +6,7 @@
         android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainListFragment">
+        tools:context=".HomeFragment">
 
     <android.support.constraint.ConstraintLayout
          android:layout_width="match_parent"
@@ -23,15 +23,6 @@
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintVertical_bias="0.0" android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp" android:layout_marginTop="8dp"/>
-
-        <Button android:text="Créer une recette" android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.552"
-                android:id="@+id/button_next" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/main_recipe_list"/>
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
