@@ -29,4 +29,8 @@
     <string name="creation_finish">Terminer la création</string>
     <string name="error_photo">Une erreur est survenue lors de la sélection de la photo</string>
     <string name="create_recipe">Créer une recette</string>
+    <string name="jarvis_hint">Jarvis peut vous aider à naviguer parmi les étapes. Par exemple, vous pouvez dire :
+        \'Jarvis, passe à l\'étape suivante\'
+    </string>
+    <string name="previous">Précédent</string>
 </resources>
