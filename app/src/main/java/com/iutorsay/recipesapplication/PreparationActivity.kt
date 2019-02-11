@@ -56,6 +56,8 @@ class PreparationActivity : AppCompatActivity() {
 
         next.setOnClickListener { next() }
 
+        previous.setOnClickListener { previous() }
+
         assistantLocation = File(filesDir, "snips")
         extractAssistantIfNeeded(assistantLocation)
         if (ensurePermissions()) {
@@ -71,6 +73,22 @@ class PreparationActivity : AppCompatActivity() {
             preparationViewModel.apply {
                 currentStep.value = nextStep
                 title.value = "Étape ${this.steps.value?.indexOf(nextStep)?.plus(1)} sur ${this.steps.value?.count()}"
+            }
+
+            preparationViewModel.currentStep.value?.timing?.let { timing ->
+                preparationViewModel.currentTiming.value = "Durée: $timing minutes"
+            }
+        }
+    }
+
+    private fun previous() {
+        val previousIndex = preparationViewModel.steps.value?.indexOf(preparationViewModel.currentStep.value)?.minus(1)
+        val previousStep = preparationViewModel.steps.value?.getOrNull(previousIndex!!)
+
+        if (previousStep != null) {
+            preparationViewModel.apply {
+                currentStep.value = previousStep
+                title.value = "Étape ${this.steps.value?.indexOf(previousStep)?.plus(1)} sur ${this.steps.value?.count()}"
             }
 
             preparationViewModel.currentStep.value?.timing?.let { timing ->
@@ -168,8 +186,10 @@ class PreparationActivity : AppCompatActivity() {
             // Intent detected, so the dialog session ends here
             client.endSession(intentMessage.sessionId, null)
             Log.d(TAG, "Intent detected: " + intentMessage.intent.intentName)
-            if (intentMessage.intent.intentName == "Anqo:NextStep") {
-                next()
+
+            when (intentMessage.intent.intentName) {
+                "Anqo:NextStep" -> next()
+                "Anqo:PreviousStep" -> previous()
             }
         }
 
