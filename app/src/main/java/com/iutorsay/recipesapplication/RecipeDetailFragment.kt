@@ -1,5 +1,6 @@
 package com.iutorsay.recipesapplication
 
+import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,9 +9,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
 import com.iutorsay.recipesapplication.adapters.DetailIngredientAdapter
 import com.iutorsay.recipesapplication.adapters.DetailStepAdapter
 import com.iutorsay.recipesapplication.adapters.bindImageFromUrl
+import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
 import com.iutorsay.recipesapplication.data.repositories.StepRepository
@@ -19,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.card_step.*
 import kotlinx.android.synthetic.main.recipe_detail_fragment.*
+import org.w3c.dom.Entity
 
 
 class RecipeDetailFragment : Fragment() {
@@ -54,7 +58,7 @@ class RecipeDetailFragment : Fragment() {
             ingredients?.let {
                 recipe_ingredients.apply {
                     layoutManager = LinearLayoutManager(activity)
-                    adapter = DetailIngredientAdapter(it)
+                    adapter = DetailIngredientAdapter(it, 1)
                 }
             }
         })
@@ -64,6 +68,15 @@ class RecipeDetailFragment : Fragment() {
                 recipe_instructions.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = DetailStepAdapter(it)
+                }
+            }
+        })
+
+        number_button.setOnClickListener(ElegantNumberButton.OnClickListener {
+            ingredients.value?.let { ings ->
+                recipe_ingredients.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = DetailIngredientAdapter(ings,  number_button.number.toInt())
                 }
             }
         })
