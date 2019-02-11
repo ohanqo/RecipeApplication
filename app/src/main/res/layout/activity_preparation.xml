@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+    <data>
+        <variable
+                type="com.iutorsay.recipesapplication.viewmodels.PreparationViewModel"
+                name="viewmodel"
+        />
+    </data>
+
+    <ScrollView
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:text="@{viewmodel.title}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_large"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/circular_std_bold"
+                    android:id="@+id/title"
+                    app:layout_constraintStart_toEndOf="@+id/previous" android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/next" android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/previous"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/next"/>
+            <TextView
+                    android:text="@{viewmodel.currentStep.text}"
+                    android:textSize="@dimen/font_normal"
+                    android:textColor="@color/dark"
+                    android:lineSpacingExtra="@dimen/spacing_tiny"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/step" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp" android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/title"/>
+            <TextView
+                    android:text="@{viewmodel.currentTiming}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/timing"
+                    app:layout_constraintTop_toBottomOf="@+id/step" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="32dp"/>
+            <Button
+                    android:text="@string/previous"
+                    android:textAllCaps="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/previous" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="16dp"/>
+            <Button
+                    android:text="@string/next"
+                    android:textAllCaps="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/next"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                    app:lottie_fileName="pulse.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/timing" android:layout_marginTop="32dp"
+                    android:layout_marginStart="16dp" android:id="@+id/lottieAnimationView"/>
+
+            <TextView
+                    android:text="@string/jarvis_hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" app:layout_constraintStart_toEndOf="@+id/lottieAnimationView"
+                    app:layout_constraintBottom_toBottomOf="@+id/lottieAnimationView"
+                    app:layout_constraintTop_toTopOf="@+id/lottieAnimationView"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp" android:id="@+id/jarvis"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+</layout>

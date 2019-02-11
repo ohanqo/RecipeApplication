@@ -3,6 +3,7 @@ package com.iutorsay.recipesapplication
 import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -20,7 +21,6 @@ import com.iutorsay.recipesapplication.data.repositories.StepRepository
 import com.iutorsay.recipesapplication.viewmodels.RecipeDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.card_step.*
 import kotlinx.android.synthetic.main.recipe_detail_fragment.*
 import org.w3c.dom.Entity
 
@@ -80,5 +80,13 @@ class RecipeDetailFragment : Fragment() {
                 }
             }
         })
+
+        preparation_button.setOnClickListener {
+            val intent = Intent(context, PreparationActivity::class.java)
+
+            intent.putExtra("recipe", recipe)
+
+            startActivity(intent)
+        }
     }
 }
