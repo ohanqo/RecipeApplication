@@ -2,7 +2,6 @@ package com.iutorsay.recipesapplication.fragments.creation
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,17 +11,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.iutorsay.recipesapplication.R
-import com.iutorsay.recipesapplication.viewmodels.RecipeCreationViewModel
+import com.iutorsay.recipesapplication.viewmodels.CreationViewModel
 import kotlinx.android.synthetic.main.fragment_photo.*
 import kotlinx.android.synthetic.main.recipe_image.view.*
-import kotlinx.android.synthetic.main.recipe_image_chooser.*
 import kotlinx.android.synthetic.main.recipe_image_chooser.view.*
 import pl.aprilapps.easyphotopicker.DefaultCallback
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 class PhotoFragment : Fragment() {
-    private lateinit var creationViewModel: RecipeCreationViewModel
+    private lateinit var creationViewModel: CreationViewModel
     private lateinit var takePhotoView: View
     private lateinit var showPhotoView: View
 
@@ -32,7 +30,7 @@ class PhotoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         creationViewModel = activity?.run {
-            ViewModelProviders.of(this).get(RecipeCreationViewModel::class.java)
+            ViewModelProviders.of(this).get(CreationViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
         return inflater.inflate(R.layout.fragment_photo, container, false)

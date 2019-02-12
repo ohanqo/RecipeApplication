@@ -16,12 +16,11 @@ import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
 import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.databinding.FragmentIngredientsBinding
 import com.iutorsay.recipesapplication.utilities.addFragment
-import com.iutorsay.recipesapplication.utilities.replaceFragment
-import com.iutorsay.recipesapplication.viewmodels.RecipeCreationViewModel
+import com.iutorsay.recipesapplication.viewmodels.CreationViewModel
 import kotlinx.android.synthetic.main.fragment_ingredients.*
 
 class IngredientsFragment : Fragment() {
-    private lateinit var creationViewModel: RecipeCreationViewModel
+    private lateinit var creationViewModel: CreationViewModel
     private lateinit var editIngredientAdapter: EditIngredientsAdapter
 
     override fun onCreateView(
@@ -30,7 +29,7 @@ class IngredientsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         creationViewModel = activity?.run {
-            ViewModelProviders.of(this).get(RecipeCreationViewModel::class.java)
+            ViewModelProviders.of(this).get(CreationViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
         val binding = DataBindingUtil.inflate<FragmentIngredientsBinding>(inflater, R.layout.fragment_ingredients, container, false).apply {

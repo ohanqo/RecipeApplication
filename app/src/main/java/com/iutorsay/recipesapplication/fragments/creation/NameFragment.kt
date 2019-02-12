@@ -12,13 +12,13 @@ import com.iutorsay.recipesapplication.MainActivity
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.databinding.FragmentNameBinding
 import com.iutorsay.recipesapplication.utilities.addFragment
-import com.iutorsay.recipesapplication.viewmodels.RecipeCreationViewModel
+import com.iutorsay.recipesapplication.viewmodels.CreationViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.fragment_name.*
 
 class NameFragment : Fragment() {
-    private lateinit var creationViewModel: RecipeCreationViewModel
+    private lateinit var creationViewModel: CreationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +26,7 @@ class NameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         creationViewModel = activity?.run {
-            ViewModelProviders.of(this).get(RecipeCreationViewModel::class.java)
+            ViewModelProviders.of(this).get(CreationViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
         val binding = DataBindingUtil.inflate<FragmentNameBinding>(inflater, R.layout.fragment_name, container, false).apply {

@@ -2,6 +2,6 @@ package com.iutorsay.recipesapplication.viewmodels
 
 import android.arch.lifecycle.ViewModel;
 
-class RecipeDetailViewModel : ViewModel() {
+class DetailViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

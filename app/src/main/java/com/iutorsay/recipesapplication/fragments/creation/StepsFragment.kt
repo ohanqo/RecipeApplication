@@ -15,11 +15,11 @@ import com.iutorsay.recipesapplication.adapters.EditStepsAdapter
 import com.iutorsay.recipesapplication.data.entities.Step
 import com.iutorsay.recipesapplication.databinding.FragmentStepsBinding
 import com.iutorsay.recipesapplication.utilities.addFragment
-import com.iutorsay.recipesapplication.viewmodels.RecipeCreationViewModel
+import com.iutorsay.recipesapplication.viewmodels.CreationViewModel
 import kotlinx.android.synthetic.main.fragment_steps.*
 
 class StepsFragment : Fragment() {
-    private lateinit var creationViewModel: RecipeCreationViewModel
+    private lateinit var creationViewModel: CreationViewModel
     private lateinit var editStepsAdapter: EditStepsAdapter
 
 
@@ -29,7 +29,7 @@ class StepsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         creationViewModel = activity?.run {
-            ViewModelProviders.of(this).get(RecipeCreationViewModel::class.java)
+            ViewModelProviders.of(this).get(CreationViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
 
         val binding = DataBindingUtil.inflate<FragmentStepsBinding>(inflater, R.layout.fragment_steps, container, false).apply {

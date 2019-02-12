@@ -1,6 +1,5 @@
-package com.iutorsay.recipesapplication
+package com.iutorsay.recipesapplication.fragments
 
-import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
@@ -11,38 +10,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+import com.iutorsay.recipesapplication.MainActivity
+import com.iutorsay.recipesapplication.PreparationActivity
+import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.adapters.DetailIngredientAdapter
 import com.iutorsay.recipesapplication.adapters.DetailStepAdapter
 import com.iutorsay.recipesapplication.adapters.bindImageFromUrl
-import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
 import com.iutorsay.recipesapplication.data.repositories.StepRepository
-import com.iutorsay.recipesapplication.viewmodels.RecipeDetailViewModel
+import com.iutorsay.recipesapplication.viewmodels.DetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.recipe_detail_fragment.*
-import org.w3c.dom.Entity
+import kotlinx.android.synthetic.main.fragment_detail.*
 
 
-class RecipeDetailFragment : Fragment() {
+class DetailFragment : Fragment() {
 
     companion object {
-        fun newInstance() = RecipeDetailFragment()
+        fun newInstance() = DetailFragment()
     }
 
-    private lateinit var viewModel: RecipeDetailViewModel
+    private lateinit var viewModel: DetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.recipe_detail_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RecipeDetailViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
         val recipe = arguments?.getSerializable("recipe") as Recipe
         val ingredients = IngredientRepository.getInstance().getRecipeIngredients(recipe.recipeId)
         val steps = StepRepository.getInstance().getRecipeInstructions(recipe.recipeId)
@@ -54,8 +54,8 @@ class RecipeDetailFragment : Fragment() {
         bindImageFromUrl(recipe_picture, recipe)
         recipe_description.text = recipe.description
 
-        ingredients.observe(this, Observer { ingredients ->
-            ingredients?.let {
+        ingredients.observe(this, Observer { ingredientsList ->
+            ingredientsList?.let {
                 recipe_ingredients.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = DetailIngredientAdapter(it, 1)
@@ -63,8 +63,8 @@ class RecipeDetailFragment : Fragment() {
             }
         })
 
-        steps.observe(this, Observer { steps ->
-            steps?.let {
+        steps.observe(this, Observer { stepsList ->
+            stepsList?.let {
                 recipe_instructions.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = DetailStepAdapter(it)

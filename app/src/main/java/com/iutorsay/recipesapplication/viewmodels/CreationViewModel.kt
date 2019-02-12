@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.graphics.Bitmap
 import android.support.v7.app.AppCompatActivity
-import com.iutorsay.recipesapplication.HomeFragment
+import com.iutorsay.recipesapplication.fragments.HomeFragment
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.data.entities.Recipe
@@ -17,7 +17,7 @@ import com.iutorsay.recipesapplication.utilities.replaceFragment
 import java.io.File
 import java.io.FileOutputStream
 
-class RecipeCreationViewModel : ViewModel() {
+class CreationViewModel : ViewModel() {
     val currentName = MutableLiveData<String>()
 
     val currentDescription = MutableLiveData<String>()

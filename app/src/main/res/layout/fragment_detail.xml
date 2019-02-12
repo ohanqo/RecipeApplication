@@ -63,7 +63,6 @@
                         android:fontFamily="@font/circular_std_bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ingredients"
                         android:padding="@dimen/spacing_normal"
                         android:textSize="@dimen/font_large"
                         android:textColor="@android:color/black"/>
@@ -105,7 +104,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/spacing_normal"
-                        android:id="@+id/steps"
                         android:fontFamily="@font/circular_std_bold"
                         android:textSize="@dimen/font_large"
                         android:textColor="@color/black"/>

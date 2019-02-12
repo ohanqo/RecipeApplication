@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.iutorsay.recipesapplication.viewmodels.RecipeCreationViewModel"
+                type="com.iutorsay.recipesapplication.viewmodels.CreationViewModel"
         />
     </data>
 

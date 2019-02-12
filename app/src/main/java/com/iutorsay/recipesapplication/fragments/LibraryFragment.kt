@@ -1,4 +1,4 @@
-package com.iutorsay.recipesapplication
+package com.iutorsay.recipesapplication.fragments
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -10,6 +10,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.iutorsay.recipesapplication.MainActivity
+import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.adapters.HomePageAdapter
 import com.iutorsay.recipesapplication.fragments.creation.NameFragment
 import com.iutorsay.recipesapplication.utilities.replaceFragment
