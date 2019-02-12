@@ -28,4 +28,7 @@ interface RecipeDao {
 
     @Query("UPDATE recipes SET isFavorite = :isFavorite WHERE id = :recipeId")
     fun setFavorite(recipeId: Int, isFavorite: Boolean)
+
+    @Query("SELECT * FROM recipes WHERE name LIKE :searchRecipe || '%'")
+    fun getSearch(searchRecipe: String): LiveData<List<Recipe>>
 }
