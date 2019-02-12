@@ -33,4 +33,5 @@
         \'Jarvis, passe à l\'étape suivante\'
     </string>
     <string name="previous">Précédent</string>
+    <string name="fav_recipes">Vos recettes favorites</string>
 </resources>

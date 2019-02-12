@@ -180,12 +180,18 @@ class PreparationActivity : AppCompatActivity() {
                 null, ArrayList(),
                 false, null
             )
+            jarvisDetection.setAnimation("detectionJarvis.json")
+            jarvisDetection.playAnimation()
+            jarvisDetection.loop(true)
         }
 
         client.onIntentDetectedListener = fun(intentMessage: IntentMessage) {
             // Intent detected, so the dialog session ends here
             client.endSession(intentMessage.sessionId, null)
             Log.d(TAG, "Intent detected: " + intentMessage.intent.intentName)
+
+            jarvisDetection.cancelAnimation()
+            jarvisDetection.progress = 0f
 
             when (intentMessage.intent.intentName) {
                 "Anqo:NextStep" -> next()
