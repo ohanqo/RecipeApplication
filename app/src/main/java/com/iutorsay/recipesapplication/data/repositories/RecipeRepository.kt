@@ -12,6 +12,8 @@ class RecipeRepository private constructor(private val databaseInstance: AppData
 
     fun getAll() = recipeDao.getAll()
 
+    fun getSearch(searchRecipe: String) = recipeDao.getSearch(searchRecipe)
+
     fun getAllWithIngredients() = recipeDao.getAllWithIngredients()
 
     fun insert(recipe: Recipe) : Long = InsertAsyncTask(recipeDao).execute(recipe).get()

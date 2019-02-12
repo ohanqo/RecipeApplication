@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.iutorsay.recipesapplication.fragments.HomeFragment
 import com.iutorsay.recipesapplication.fragments.LibraryFragment
+import com.iutorsay.recipesapplication.fragments.SearchFragment
 import com.iutorsay.recipesapplication.utilities.replaceFragmentWithoutBackStack
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.view.*
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
             when (selectedItem.itemId) {
                 R.id.home -> {
                     showFragment(HomeFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.search -> {
+                    showFragment(SearchFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.library -> {

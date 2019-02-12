@@ -31,4 +31,5 @@
     </string>
     <string name="previous">Précédent</string>
     <string name="fav_recipes">Vos recettes favorites</string>
+    <string name="search_title">Rechercher</string>
 </resources>
