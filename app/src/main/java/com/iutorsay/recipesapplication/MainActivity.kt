@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.MenuItem
+import com.iutorsay.recipesapplication.fragments.HomeFragment
+import com.iutorsay.recipesapplication.fragments.LibraryFragment
 import com.iutorsay.recipesapplication.utilities.replaceFragmentWithoutBackStack
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.view.*

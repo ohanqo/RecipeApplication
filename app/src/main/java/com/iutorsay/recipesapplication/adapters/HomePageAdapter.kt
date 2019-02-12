@@ -11,18 +11,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.iutorsay.recipesapplication.R
-import com.iutorsay.recipesapplication.RecipeDetailFragment
+import com.iutorsay.recipesapplication.fragments.DetailFragment
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
-import com.iutorsay.recipesapplication.databinding.RecipeCardBinding
+import com.iutorsay.recipesapplication.databinding.CardRecipeBinding
 import com.iutorsay.recipesapplication.utilities.replaceFragment
-import kotlinx.android.synthetic.main.recipe_card.view.*
+import kotlinx.android.synthetic.main.card_recipe.view.*
 
 class HomePageAdapter(private val context: Context) : ListAdapter<Recipe, HomePageAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = DataBindingUtil.inflate<RecipeCardBinding>(
+        val view = DataBindingUtil.inflate<CardRecipeBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.recipe_card, parent, false
+            R.layout.card_recipe, parent, false
         )
 
         return ViewHolder(view)
@@ -74,7 +74,7 @@ class HomePageAdapter(private val context: Context) : ListAdapter<Recipe, HomePa
 
     private fun handleCardClick(holder: ViewHolder, recipe: Recipe) {
         holder.itemView.setOnClickListener {
-            val detailFragment = RecipeDetailFragment()
+            val detailFragment = DetailFragment()
             val bundle = Bundle()
 
             bundle.putSerializable("recipe", recipe)
@@ -84,7 +84,7 @@ class HomePageAdapter(private val context: Context) : ListAdapter<Recipe, HomePa
         }
     }
 
-    inner class ViewHolder(private val binding: RecipeCardBinding, var recipe: Recipe? = null) :
+    inner class ViewHolder(private val binding: CardRecipeBinding, var recipe: Recipe? = null) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(_recipe: Recipe) {
             with(binding) {
