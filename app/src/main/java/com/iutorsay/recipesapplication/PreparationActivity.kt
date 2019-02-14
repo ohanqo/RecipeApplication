@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.StepRepository
 import com.iutorsay.recipesapplication.databinding.ActivityPreparationBinding
