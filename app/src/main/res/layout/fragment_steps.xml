@@ -99,6 +99,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
+                    android:imeOptions="actionDone"
                     android:hint="@string/recipe_instruction"
                     android:text="@={viewmodel.inputStep}"
                     android:ems="10"
@@ -110,6 +111,7 @@
             <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
                     android:inputType="numberSigned"
                     android:text="@={viewmodel.inputStepTiming}"
                     android:hint="@string/timing"

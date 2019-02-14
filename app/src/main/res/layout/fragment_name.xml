@@ -43,6 +43,7 @@
                         android:id="@+id/input_step"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:imeOptions="actionDone"
                         android:inputType="text"
                         android:text="@={viewmodel.currentName}"
                         android:textColor="@color/black"
@@ -64,6 +65,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
+                        android:imeOptions="actionDone"
                         android:textColor="@color/black"
                         android:text="@={viewmodel.currentDescription}"
                         android:hint="@string/creation_recipe_description"/>

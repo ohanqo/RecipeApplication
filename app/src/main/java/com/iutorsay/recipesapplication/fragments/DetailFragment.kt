@@ -27,10 +27,6 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = DetailFragment()
-    }
-
     private lateinit var viewModel: DetailViewModel
 
     override fun onCreateView(

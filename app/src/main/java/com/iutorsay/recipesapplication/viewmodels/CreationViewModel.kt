@@ -63,7 +63,7 @@ class CreationViewModel : ViewModel() {
             if (! dir.exists()) dir.mkdirs()
             val filePicture = File(dir, "recipe_photo")
             val fos = FileOutputStream(filePicture)
-            photo.compress(Bitmap.CompressFormat.PNG, 90, fos)
+            photo.compress(Bitmap.CompressFormat.PNG, 50, fos)
             fos.flush()
             fos.close()
         }

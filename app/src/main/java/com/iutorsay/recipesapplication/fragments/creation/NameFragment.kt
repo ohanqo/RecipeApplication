@@ -12,6 +12,7 @@ import com.iutorsay.recipesapplication.MainActivity
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.databinding.FragmentNameBinding
 import com.iutorsay.recipesapplication.utilities.addFragment
+import com.iutorsay.recipesapplication.utilities.hideSoftKeyboard
 import com.iutorsay.recipesapplication.viewmodels.CreationViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -44,7 +45,10 @@ class NameFragment : Fragment() {
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        button_next.setOnClickListener { handleButtonClick() }
+        button_next.setOnClickListener {
+            activity?.let { _activity -> hideSoftKeyboard(_activity) }
+            handleButtonClick()
+        }
     }
 
     private fun handleButtonClick() {

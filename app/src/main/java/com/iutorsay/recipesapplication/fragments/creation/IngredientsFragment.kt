@@ -1,5 +1,6 @@
 package com.iutorsay.recipesapplication.fragments.creation
 
+//import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -12,12 +13,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
-//import com.iutorsay.recipesapplication.adapters.EditIngredientsAdapter
 import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.databinding.FragmentIngredientsBinding
 import com.iutorsay.recipesapplication.utilities.addFragment
+import com.iutorsay.recipesapplication.utilities.hideSoftKeyboard
 import com.iutorsay.recipesapplication.viewmodels.CreationViewModel
 import kotlinx.android.synthetic.main.fragment_ingredients.*
+
 
 class IngredientsFragment : Fragment() {
     private lateinit var creationViewModel: CreationViewModel
@@ -53,9 +55,14 @@ class IngredientsFragment : Fragment() {
 
         editIngredientAdapter.setIngredients(creationViewModel.currentIngredients)
 
-        button_add_ingredient.setOnClickListener { addIngredientToList() }
+        button_add_ingredient.setOnClickListener {
+            activity?.let { _activity -> hideSoftKeyboard(_activity) }
+            addIngredientToList()
+        }
 
         button_next.setOnClickListener {
+            activity?.let { _activity -> hideSoftKeyboard(_activity) }
+
             if (creationViewModel.currentIngredients.size > 0) {
                 addFragment(context as AppCompatActivity, R.id.content, StepsFragment())
             } else {
