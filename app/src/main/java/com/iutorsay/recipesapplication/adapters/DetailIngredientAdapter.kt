@@ -32,7 +32,10 @@ class DetailIngredientAdapter(private val ingredientList: List<Ingredient>, priv
     private fun regexMultiplication(quantity : String) : String {
         val reNumber = Regex("[^0-9]")
         val reUnity = Regex("[0-9]")
-        val numberResult = reNumber.replace(quantity, "").toInt()*nbPeople
+        if (reNumber.replace(quantity, "").isEmpty()){
+            return quantity
+        }
+        val numberResult = reNumber.replace(quantity, "").toInt() * nbPeople
         val unityResult = reUnity.replace(quantity, "")
         return numberResult.toString()+unityResult
     }
