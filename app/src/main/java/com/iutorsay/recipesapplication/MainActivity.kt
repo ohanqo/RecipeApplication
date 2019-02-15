@@ -5,7 +5,15 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.MenuItem
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.ParsedRequestListener
+import com.google.gson.reflect.TypeToken
+import com.iutorsay.recipesapplication.data.relations.RecipeWithIngredientsAndSteps
+import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
+import com.iutorsay.recipesapplication.data.responses.RecipeResponse
+import com.iutorsay.recipesapplication.data.services.RecipeService
 import com.iutorsay.recipesapplication.fragments.HomeFragment
 import com.iutorsay.recipesapplication.fragments.LibraryFragment
 import com.iutorsay.recipesapplication.fragments.SearchFragment
@@ -29,6 +37,25 @@ class MainActivity : AppCompatActivity() {
         handleNavigationClick()
 
         showFragment(HomeFragment())
+
+        RecipeService
+            .getRecipes()
+            .getAsParsed(
+                object: TypeToken<List<RecipeResponse>>() {},
+                object: ParsedRequestListener<List<RecipeResponse>> {
+                    override fun onResponse(response: List<RecipeResponse>) {
+                        response.map { recipe ->
+                            Log.d("__REC", recipe.name.toString())
+                            Log.d("__ING", recipe.ingredients.toString())
+                            Log.d("__STE", recipe.steps.toString())
+                        }
+                    }
+
+                    override fun onError(anError: ANError?) {
+                        Log.e("__ERREUR", "Récuperation des recettes via l'API impossibles $anError")
+                    }
+                }
+            )
     }
 
     private fun handleNavigationClick() {

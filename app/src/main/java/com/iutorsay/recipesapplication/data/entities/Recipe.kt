@@ -12,7 +12,7 @@ data class Recipe(
     val name: String,
     val description: String,
     val pictureUrl: String,
-    val isFavorite: Boolean
+    var isFavorite: Boolean
 ) : Serializable {
     @Ignore val ingredients: List<Ingredient> = arrayListOf()
     @Ignore val steps: List<Step> = arrayListOf()
