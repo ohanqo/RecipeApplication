@@ -4,16 +4,23 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.graphics.Bitmap
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.iutorsay.recipesapplication.fragments.HomeFragment
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.data.entities.Ingredient
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.entities.Step
+import com.iutorsay.recipesapplication.data.relations.RecipeWithIngredientsAndSteps
 import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
 import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
 import com.iutorsay.recipesapplication.data.repositories.StepRepository
+import com.iutorsay.recipesapplication.data.responses.RecipeResponse
+import com.iutorsay.recipesapplication.data.services.RecipeService
 import com.iutorsay.recipesapplication.utilities.popAllFragments
 import com.iutorsay.recipesapplication.utilities.replaceFragment
+import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
 
@@ -49,6 +56,20 @@ class CreationViewModel : ViewModel() {
 
         IngredientRepository.getInstance().insertAll(cloneIngredientsList)
         StepRepository.getInstance().insertAll(cloneStepsList)
+
+        val recipeWithIngredientsAndSteps = RecipeResponse().apply {
+            id = index
+            name = recipe.name
+            description = recipe.description
+            pictureUrl = recipe.pictureUrl
+            ingredients = cloneIngredientsList
+            steps = cloneStepsList
+        }
+
+        var recipeList : List<RecipeResponse> = ArrayList()
+        recipeList += recipeWithIngredientsAndSteps
+
+        RecipeService.postRecipes(recipeList)
 
         storeRecipePhoto(index, context)
 
