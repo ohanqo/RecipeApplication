@@ -10,8 +10,10 @@ import android.view.MenuItem
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
 import com.google.gson.reflect.TypeToken
-import com.iutorsay.recipesapplication.data.relations.RecipeWithIngredientsAndSteps
+import com.iutorsay.recipesapplication.data.entities.Recipe
+import com.iutorsay.recipesapplication.data.repositories.IngredientRepository
 import com.iutorsay.recipesapplication.data.repositories.RecipeRepository
+import com.iutorsay.recipesapplication.data.repositories.StepRepository
 import com.iutorsay.recipesapplication.data.responses.RecipeResponse
 import com.iutorsay.recipesapplication.data.services.RecipeService
 import com.iutorsay.recipesapplication.fragments.HomeFragment
@@ -38,16 +40,28 @@ class MainActivity : AppCompatActivity() {
 
         showFragment(HomeFragment())
 
+        fetchNewRecipes()
+    }
+
+    private fun fetchNewRecipes() {
         RecipeService
             .getRecipes()
             .getAsParsed(
-                object: TypeToken<List<RecipeResponse>>() {},
-                object: ParsedRequestListener<List<RecipeResponse>> {
+                object : TypeToken<List<RecipeResponse>>() {},
+                object : ParsedRequestListener<List<RecipeResponse>> {
                     override fun onResponse(response: List<RecipeResponse>) {
                         response.map { recipe ->
-                            Log.d("__REC", recipe.name.toString())
-                            Log.d("__ING", recipe.ingredients.toString())
-                            Log.d("__STE", recipe.steps.toString())
+                            RecipeRepository.getInstance().insert(Recipe(recipe.id, recipe.name!!, recipe.description!!, recipe.pictureUrl!!, false))
+
+                            recipe.ingredients?.let { ingredients ->
+                                ingredients.forEach { it.recipeId = recipe.id }
+                                IngredientRepository.getInstance().insertAll(ingredients)
+                            }
+
+                            recipe.steps?.let { steps ->
+                                steps.forEach { it.recipeId = recipe.id }
+                                StepRepository.getInstance().insertAll(steps)
+                            }
                         }
                     }
 
