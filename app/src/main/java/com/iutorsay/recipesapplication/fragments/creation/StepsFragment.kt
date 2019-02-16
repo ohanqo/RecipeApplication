@@ -15,6 +15,7 @@ import com.iutorsay.recipesapplication.adapters.EditStepsAdapter
 import com.iutorsay.recipesapplication.data.entities.Step
 import com.iutorsay.recipesapplication.databinding.FragmentStepsBinding
 import com.iutorsay.recipesapplication.utilities.addFragment
+import com.iutorsay.recipesapplication.utilities.hideSoftKeyboard
 import com.iutorsay.recipesapplication.viewmodels.CreationViewModel
 import kotlinx.android.synthetic.main.fragment_steps.*
 
@@ -53,9 +54,14 @@ class StepsFragment : Fragment() {
 
         editStepsAdapter.setSteps(creationViewModel.currentSteps)
 
-        button_add_step.setOnClickListener { addStepToList() }
+        button_add_step.setOnClickListener {
+            activity?.let { _activity -> hideSoftKeyboard(_activity) }
+            addStepToList()
+        }
 
         button_next.setOnClickListener {
+            activity?.let { _activity -> hideSoftKeyboard(_activity) }
+
             if (creationViewModel.currentSteps.size > 0) {
                 addFragment(context as AppCompatActivity, R.id.content, PhotoFragment())
             } else {

@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.util.Log
+import android.view.View
 import com.iutorsay.recipesapplication.data.entities.Recipe
 import com.iutorsay.recipesapplication.data.repositories.StepRepository
 import com.iutorsay.recipesapplication.databinding.ActivityPreparationBinding
@@ -50,6 +51,25 @@ class PreparationActivity : AppCompatActivity() {
                 preparationViewModel.title.value = "Étape ${preparationViewModel.steps.value?.indexOf(it)?.plus(1)} sur ${preparationViewModel.steps.value?.count()}"
                 it.timing?.let { timing ->
                     preparationViewModel.currentTiming.value = "Durée: $timing minutes"
+                }
+            }
+        })
+
+        // Handle buttons visibility and exit button
+        preparationViewModel.currentStep.observe(this, Observer {
+            it?.let { step ->
+
+                previous.isEnabled = true
+                next.isEnabled = true
+                exit.visibility = View.GONE
+
+                if (step == preparationViewModel.steps.value?.first()) {
+                    previous.isEnabled = false
+                }
+
+                if (step == preparationViewModel.steps.value?.last()) {
+                    next.isEnabled = false
+                    exit.visibility = View.VISIBLE
                 }
             }
         })
@@ -95,6 +115,10 @@ class PreparationActivity : AppCompatActivity() {
                 preparationViewModel.currentTiming.value = "Durée: $timing minutes"
             }
         }
+    }
+
+    fun closeActivity(view: View) {
+        finish()
     }
 
     private fun ensurePermissions(): Boolean {
@@ -190,9 +214,6 @@ class PreparationActivity : AppCompatActivity() {
             client.endSession(intentMessage.sessionId, null)
             Log.d(TAG, "Intent detected: " + intentMessage.intent.intentName)
 
-            jarvisDetection.cancelAnimation()
-            jarvisDetection.progress = 0f
-
             when (intentMessage.intent.intentName) {
                 "Anqo:NextStep" -> next()
                 "Anqo:PreviousStep" -> previous()
@@ -202,6 +223,11 @@ class PreparationActivity : AppCompatActivity() {
         client.onSnipsWatchListener = fun(s: String) {
             Log.d(TAG, "Log: $s")
         }
+
+        client.onSessionEndedListener = ({
+            jarvisDetection.cancelAnimation()
+            jarvisDetection.progress = 0f
+        })
 
         return client
     }
