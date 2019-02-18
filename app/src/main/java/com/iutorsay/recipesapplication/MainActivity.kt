@@ -1,5 +1,6 @@
 package com.iutorsay.recipesapplication
 
+import android.arch.lifecycle.Observer
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -55,12 +56,34 @@ class MainActivity : AppCompatActivity() {
 
                             recipe.ingredients?.let { ingredients ->
                                 ingredients.forEach { it.recipeId = recipe.id }
-                                IngredientRepository.getInstance().insertAll(ingredients)
+
+                                val storedIngredients = IngredientRepository.getInstance().getRecipeIngredients(recipe.id)
+
+                                storedIngredients.observe(this@MainActivity, Observer { storedIngredientsList ->
+                                    if (ingredients != storedIngredientsList) {
+                                        storedIngredients.removeObservers(this@MainActivity)
+                                        IngredientRepository.getInstance().insertAll(ingredients)
+                                    }
+                                })
                             }
 
                             recipe.steps?.let { steps ->
                                 steps.forEach { it.recipeId = recipe.id }
-                                StepRepository.getInstance().insertAll(steps)
+
+                                val storedSteps = StepRepository.getInstance().getRecipeInstructions(recipe.id)
+
+                                storedSteps.observe(this@MainActivity, Observer { storedStepsList ->
+                                    Log.d("__STEPS", steps.toString())
+                                    Log.d("__STEPS", storedStepsList.toString())
+
+                                    if (steps != storedStepsList) {
+                                        storedSteps.removeObservers(this@MainActivity)
+                                        StepRepository.getInstance().insertAll(steps)
+                                        Log.d("__REC", "${recipe.name} -> étapes différents, on les ajoutes")
+                                    } else {
+                                        Log.d("__REC", "${recipe.name} -> étapes identiques")
+                                    }
+                                })
                             }
                         }
                     }
