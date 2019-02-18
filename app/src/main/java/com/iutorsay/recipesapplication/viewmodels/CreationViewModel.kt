@@ -69,7 +69,15 @@ class CreationViewModel : ViewModel() {
         var recipeList : List<RecipeResponse> = ArrayList()
         recipeList += recipeWithIngredientsAndSteps
 
-        RecipeService.postRecipes(recipeList)
+        RecipeService.postRecipes(recipeList).getAsJSONObject(object: JSONObjectRequestListener {
+            override fun onResponse(response: JSONObject?) {
+                Log.d("__RES", response.toString())
+            }
+
+            override fun onError(anError: ANError) {
+                Log.d("__ERRR", anError.errorBody.toString())
+            }
+        });
 
         storeRecipePhoto(index, context)
 
