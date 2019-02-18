@@ -54,6 +54,7 @@ class HomePageAdapter(private val context: Context) : ListAdapter<Recipe, HomePa
 
             if (recipe.isFavorite) {
                 RecipeRepository.getInstance().setFavorites(recipe.recipeId, false)
+                holder.itemView.announceForAccessibility("Recette retirée des favoris")
             } else {
                 holder.itemView.heart.addAnimatorListener(object : Animator.AnimatorListener {
                     override fun onAnimationStart(animation: Animator) {}
@@ -68,6 +69,8 @@ class HomePageAdapter(private val context: Context) : ListAdapter<Recipe, HomePa
                 })
 
                 holder.itemView.heart.playAnimation()
+
+                holder.itemView.announceForAccessibility("Recette ajoutée aux favoris")
             }
         }
     }

@@ -33,4 +33,7 @@
     <string name="fav_recipes">Vos recettes favorites</string>
     <string name="search_title">Rechercher</string>
     <string name="finish">Terminer</string>
+    <string name="detail_next">Affiche l\'étape suivante</string>
+    <string name="detail_previous">Affiche l\'étape précédente</string>
+    <string name="favorite_button">Bouton de favori</string>
 </resources>

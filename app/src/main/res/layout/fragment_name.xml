@@ -72,6 +72,7 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.button.MaterialButton
                     android:text="@string/next"
+                    android:contentDescription="Bouton Suivant qui mène à la création des ingrédients"
                     android:textAllCaps="false"
                     android:textColor="@color/grey"
                     android:drawableStart="@drawable/ic_navigate_next_24dp"

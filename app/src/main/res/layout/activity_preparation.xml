@@ -48,6 +48,7 @@
                     android:layout_marginStart="16dp" android:layout_marginTop="32dp"/>
             <Button
                     android:text="@string/previous"
+                    android:contentDescription="@string/detail_previous"
                     android:textAllCaps="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,6 +57,7 @@
                     android:layout_marginTop="16dp"/>
             <Button
                     android:text="@string/next"
+                    android:contentDescription="@string/detail_next"
                     android:textAllCaps="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/next"
