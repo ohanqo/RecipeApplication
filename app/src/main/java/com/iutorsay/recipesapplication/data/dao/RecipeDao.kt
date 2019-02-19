@@ -7,10 +7,10 @@ import com.iutorsay.recipesapplication.data.relations.RecipeWithIngredientsAndSt
 
 @Dao
 interface RecipeDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(recipe: Recipe) : Long
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(recipes: List<Recipe>)
 
     @Query("SELECT * FROM recipes WHERE id=:id")
