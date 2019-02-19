@@ -23,12 +23,12 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            buildConfigField "String", "URL_SERVER", "\"http://iut.alexandre-valentin.me:8080\""
+            buildConfigField "String", "URL_SERVER", "\"http://lyberteam.eu:8080\""
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
         release {
             minifyEnabled false
-            buildConfigField "String", "URL_SERVER", "\"http://iut.alexandre-valentin.me:8080\""
+            buildConfigField "String", "URL_SERVER", "\"http://lyberteam.eu:8080\""
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }

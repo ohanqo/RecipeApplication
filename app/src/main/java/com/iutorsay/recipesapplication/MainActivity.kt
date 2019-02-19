@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
                         response.map { recipe ->
                             RecipeRepository.getInstance().insert(Recipe(recipe.id, recipe.name!!, recipe.description!!, recipe.pictureUrl!!, false))
 
+                            Log.d("__ADD", "Recette ${recipe.id} ${recipe.name}")
+
                             recipe.ingredients?.let { ingredients ->
                                 ingredients.forEach { it.recipeId = recipe.id }
 

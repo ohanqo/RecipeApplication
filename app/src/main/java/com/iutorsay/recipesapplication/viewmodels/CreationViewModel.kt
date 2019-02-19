@@ -70,6 +70,8 @@ class CreationViewModel : ViewModel() {
         IngredientRepository.getInstance().insertAll(cloneIngredientsList)
         StepRepository.getInstance().insertAll(cloneStepsList)
 
+        Log.d("__ADD", "Recette $index ${recipe.name}")
+
         recipeResponse = RecipeResponse().apply {
             id = index
             name = recipe.name
@@ -141,6 +143,7 @@ class CreationViewModel : ViewModel() {
                                 recipeResponse?.pictureUrl = downloadUri.toString()
                                 postRecipeToApi()
                                 Log.d("__UPLOAD", "OK -> $downloadUri")
+                                Toast.makeText(context, "Envoi de l'image effectué", Toast.LENGTH_SHORT).show()
                             } else {
                                 postRecipeToApi()
                                 Log.d("__UPLOAD", "Error ${taskComplete.exception}")
