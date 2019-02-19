@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.storage.FirebaseStorage
 import com.iutorsay.recipesapplication.fragments.HomeFragment
 import com.iutorsay.recipesapplication.R
 import com.iutorsay.recipesapplication.data.entities.Ingredient
@@ -23,8 +25,17 @@ import com.iutorsay.recipesapplication.utilities.replaceFragment
 import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
+import android.R.attr.bitmap
+import android.net.Uri
+import android.widget.Toast
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.UploadTask
+import java.io.ByteArrayOutputStream
 
 class CreationViewModel : ViewModel() {
+
     val currentName = MutableLiveData<String>()
 
     val currentDescription = MutableLiveData<String>()
@@ -43,6 +54,8 @@ class CreationViewModel : ViewModel() {
 
     var recipePhoto : Bitmap? = null
 
+    var recipeResponse : RecipeResponse? = null
+
     fun createRecipe(context: AppCompatActivity) {
         val recipe = Recipe(0, currentName.value.toString(), currentDescription.value.toString(), "", false)
         val index = RecipeRepository.getInstance().insert(recipe).toInt()
@@ -57,7 +70,7 @@ class CreationViewModel : ViewModel() {
         IngredientRepository.getInstance().insertAll(cloneIngredientsList)
         StepRepository.getInstance().insertAll(cloneStepsList)
 
-        val recipeWithIngredientsAndSteps = RecipeResponse().apply {
+        recipeResponse = RecipeResponse().apply {
             id = index
             name = recipe.name
             description = recipe.description
@@ -66,24 +79,81 @@ class CreationViewModel : ViewModel() {
             steps = cloneStepsList
         }
 
-        var recipeList : List<RecipeResponse> = ArrayList()
-        recipeList += recipeWithIngredientsAndSteps
+        //postRecipeToApi() Last
 
-        RecipeService.postRecipes(recipeList).getAsJSONObject(object: JSONObjectRequestListener {
-            override fun onResponse(response: JSONObject?) {
-                Log.d("__RES", response.toString())
-            }
-
-            override fun onError(anError: ANError) {
-                Log.d("__ERRR", anError.errorBody.toString())
-            }
-        });
-
-        storeRecipePhoto(index, context)
+        //uploadPhoto(index, context)
+        if (recipePhoto != null) {
+            storeRecipePhoto(index, context)
+        } else {
+            postRecipeToApi()
+        }
 
         popAllFragments(context)
         replaceFragment(context, R.id.content, HomeFragment())
         clearViewModel()
+    }
+
+    private fun postRecipeToApi() {
+        recipeResponse?.let {
+            var recipeList : List<RecipeResponse> = ArrayList()
+            recipeList += it
+
+            RecipeService.postRecipes(recipeList).getAsJSONObject(object: JSONObjectRequestListener {
+                override fun onResponse(response: JSONObject?) {
+                    Log.d("__RES", response.toString())
+                }
+
+                override fun onError(anError: ANError) {
+                    Log.d("__ERRR", anError.errorBody.toString())
+                }
+            })
+        }
+    }
+
+    private fun uploadPhoto(index: Int, context: AppCompatActivity, filePicture: File) {
+            val auth = FirebaseAuth.getInstance()
+
+            auth.signInAnonymously()
+                .addOnCompleteListener(context) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d("__TEST", "signInAnonymously:success")
+                        val user = auth.currentUser
+
+                        val storage = FirebaseStorage.getInstance()
+                        val storageRef = storage.reference
+                        val imageRef = storageRef.child("recipes/$index")
+                        val baos = ByteArrayOutputStream()
+                        recipePhoto?.compress(Bitmap.CompressFormat.JPEG, 50, baos)
+
+                        val uploadTask = imageRef.putFile(Uri.fromFile(filePicture))
+
+                        uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                            if (!task.isSuccessful) {
+                                task.exception?.let {
+                                    throw it
+                                }
+                            }
+                            return@Continuation imageRef.downloadUrl
+                        }).addOnCompleteListener { taskComplete ->
+                            if (taskComplete.isSuccessful) {
+                                val downloadUri = taskComplete.result
+                                recipeResponse?.pictureUrl = downloadUri.toString()
+                                postRecipeToApi()
+                                Log.d("__UPLOAD", "OK -> $downloadUri")
+                            } else {
+                                postRecipeToApi()
+                                Log.d("__UPLOAD", "Error ${taskComplete.exception}")
+                            }
+                        }
+
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w("__TEST", "signInAnonymously:failure", task.exception)
+                        postRecipeToApi()
+                    }
+
+        }
     }
 
     private fun storeRecipePhoto(recipeIndex: Int, context: AppCompatActivity) {
@@ -93,6 +163,7 @@ class CreationViewModel : ViewModel() {
             val filePicture = File(dir, "recipe_photo")
             val fos = FileOutputStream(filePicture)
             photo.compress(Bitmap.CompressFormat.PNG, 50, fos)
+            uploadPhoto(recipeIndex, context, filePicture)
             fos.flush()
             fos.close()
         }

@@ -22,6 +22,7 @@ import com.iutorsay.recipesapplication.fragments.LibraryFragment
 import com.iutorsay.recipesapplication.fragments.SearchFragment
 import com.iutorsay.recipesapplication.utilities.replaceFragmentWithoutBackStack
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.card_step.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 
 
@@ -60,7 +61,13 @@ class MainActivity : AppCompatActivity() {
                                 val storedIngredients = IngredientRepository.getInstance().getRecipeIngredients(recipe.id)
 
                                 storedIngredients.observe(this@MainActivity, Observer { storedIngredientsList ->
-                                    if (ingredients != storedIngredientsList) {
+                                    val storedIngredientsName = storedIngredientsList?.map { it.name }
+                                    val apiIngredientsName = ingredients.map { it.name }
+
+                                    val storedIngredientsQuantity = storedIngredientsList?.map { it.quantity }
+                                    val apiIngredientsQuantity = ingredients.map { it.quantity }
+
+                                    if (storedIngredientsName != apiIngredientsName && storedIngredientsQuantity != apiIngredientsQuantity) {
                                         storedIngredients.removeObservers(this@MainActivity)
                                         IngredientRepository.getInstance().insertAll(ingredients)
                                     }
@@ -73,10 +80,13 @@ class MainActivity : AppCompatActivity() {
                                 val storedSteps = StepRepository.getInstance().getRecipeInstructions(recipe.id)
 
                                 storedSteps.observe(this@MainActivity, Observer { storedStepsList ->
-                                    Log.d("__STEPS", steps.toString())
-                                    Log.d("__STEPS", storedStepsList.toString())
+                                    val storedStepText = storedStepsList?.map { it.text }
+                                    val apiStepText = steps.map { it.text }
 
-                                    if (steps != storedStepsList) {
+                                    val storedStepTiming = storedStepsList?.map { it.timing }
+                                    val apiStepTiming = steps.map { it.timing }
+
+                                    if (storedStepText != apiStepText && storedStepTiming != apiStepTiming) {
                                         storedSteps.removeObservers(this@MainActivity)
                                         StepRepository.getInstance().insertAll(steps)
                                         Log.d("__REC", "${recipe.name} -> étapes différents, on les ajoutes")
